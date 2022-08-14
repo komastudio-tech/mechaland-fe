@@ -23,7 +23,7 @@ export default function Home() {
           <img src="/assets/temp/banner1.jpeg" alt="Loading..." className={styles.swipe} />
           <div className={styles.bannerText}>
             <h1 className={styles.bannerTitle}>Blue Ashes Keycap Set</h1>
-            <a href="#" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.bannerButton}>BUY NOW!</a>
+            <a href="https://www.tokopedia.com/mechaland" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.bannerButton}>BUY NOW!</a>
           </div>
         </div>
         {/* <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">

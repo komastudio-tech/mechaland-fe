@@ -222,6 +222,10 @@
   border-radius: 6px;
 }
 
+.bannerButton:hover {
+  color: #E5E4CC;
+}
+
 /* DESCRIPTION */
 
 .desc {
