@@ -1,9 +1,10 @@
-import '../../styles/globals.css'
-// import "bootstrap/dist/css/bootstrap.css";
-import LoadingPage from '../layouts/LoadingPage';
-import Layout from '../layouts/Layout/Index.js';
-import styles from "../../styles/Home.module.css";
+
+import '../../styles/globals.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from 'react';
+import Layout from '../layouts/Layout/Index.js';
+import LoadingPage from '../layouts/LoadingPage';
+import styles from "../../styles/Home.module.css";
 
 function MyApp({ Component, pageProps }) {
   const [showLoading, setShowLoading] = useState(true);
@@ -19,6 +20,10 @@ function MyApp({ Component, pageProps }) {
       setShowLoading(false);
     }, [300]);
   }
+
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
 
   return (
     <div className={styles.container}>

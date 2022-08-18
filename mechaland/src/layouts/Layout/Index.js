@@ -35,6 +35,31 @@ export default function Navigation({ children }) {
     tokopedia: "mechaland",
     instagram: "mechaland_"
   }]);
+  const [clientWindowHeight, setClientWindowHeight] = useState("");
+  const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
+  const [padding, setPadding] = useState(30);
+  const [boxShadow, setBoxShadow] = useState(0);
+
+  const handleScroll = () => {
+    setClientWindowHeight(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll); 
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
+  useEffect(() => {
+    let backgroundTransparacyVar = clientWindowHeight / 600;
+  
+    if (backgroundTransparacyVar < 1) {
+        let paddingVar = 30 - backgroundTransparacyVar * 20;
+        let boxShadowVar = backgroundTransparacyVar * 0.1;
+        setBackgroundTransparacy(backgroundTransparacyVar);
+        setPadding(paddingVar);
+        setBoxShadow(boxShadowVar);
+    }
+  }, [clientWindowHeight]);
 
   // const getData = async () => {
   //   try {
@@ -189,6 +214,66 @@ export default function Navigation({ children }) {
           </div>
         </div>
       </nav> */}
+      <nav class="navbar navbar-expand-md fixed-top px-default" 
+        style={{
+          background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
+          padding: `${padding}px 0px`,
+          boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
+        }}
+      >
+        <div class="container-fluid truly-center-grid" style={{alignItem: 'center'}}>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-start truly-center-child" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                <img
+                  src="/assets/mechaland_long.png" href="/" alt="Mechaland" width="30%" height="30%" style={{filter: `invert(100%)`}}
+                />
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-center flex-grow-1">
+                <li class="nav-item dropdown mx-2">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>GROUP BUY</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">LIVE</a></li>
+                    <li><a class="dropdown-item" href="#">PERORDER</a></li>
+                    <li><a class="dropdown-item" href="#">INTEREST CHECK</a></li>
+                    <li><a class="dropdown-item" href="#">UPDATE</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="#"><span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>IN-STOCK</span></a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="#">
+                    {/* <img
+                      src="/assets/mechaland_long.png" alt="Mechaland" width="30%" height="30%" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
+                    /> */}
+                  </a>
+                </li>
+                <li class="nav-item dropdown mx-2">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>UPCOMING</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">IN-STOCK</a></li>
+                    <li><a class="dropdown-item" href="#">GROUP BUY</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href={`https://discord.gg/dGU2FyaUxd`} target="_blank" rel="noopener noreferrer"><span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>DISCORD</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       {children}
 

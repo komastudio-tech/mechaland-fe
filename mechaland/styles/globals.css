@@ -27,20 +27,56 @@ a {
 
 /* CAROUSEL */
 
-.carousel-indicators li {
-  position: relative;
-  -webkit-box-flex: 0;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  width: 10px;
-  height: 10px;
-  margin-right: 3px;
-  margin-left: 3px;
-  text-indent: -999px;
-  border-radius: 16px;
-  border: 1px solid #BAC7A7;
+.carousel {
+  height: 100%;
 }
 
-.carousel-indicators li.active {
-  background-color: #BAC7A7;
+.carousel-indicators [data-bs-target] {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: transparent !important;
+  border-radius: 16px !important;
+  border: 1px solid #BAC7A7 !important;
+}
+
+.carousel-indicators .active {
+  background-color: #BAC7A7 !important;
+}
+
+.carousel-inner {
+  text-align: center;
+  height: 100%;
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.px-default {
+  padding-left: 10% !important;
+  padding-right: 10% !important;
+}
+
+/* CENTER */
+
+.truly-center-grid {
+	/* display: grid !important; */
+	/* grid-template-columns: 1fr auto 1fr; */
+	align-items: center;
+}
+
+.truly-center-grid .truly-center-child:last-child {
+  text-align: center;
+}
+
+/* TOGGLER */
+
+.navbar-toggler {
+  padding: 2px 6px !important;
+  color: #44564B !important;
+}
+
+.navbar-toggler-icon {
+  width: 1em !important;
+  height: 1em !important;
 }
