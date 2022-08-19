@@ -98,7 +98,7 @@ export default function Home() {
 
       <div className={styles.sectionDiscord}>
         <h2 className={styles.title}>Join Our Discord!</h2>
-        <p style={{fontSize: "18px"}}>so you won't miss anything!</p>
+        <p style={{fontSize: "18px"}}>so you won&apos;t miss anything!</p>
         <Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">
           <Row>
             <Col>
