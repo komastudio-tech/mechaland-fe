@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../../../styles/Home.module.css';
 import { SEO, Skeleton } from '../../components';
 import { Row, Col } from "reactstrap";

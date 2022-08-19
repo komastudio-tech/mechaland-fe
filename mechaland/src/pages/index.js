@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../../styles/Home.module.css';
 import { SEO, Skeleton } from '../components';
 import { Row, Col } from "reactstrap";
@@ -17,32 +18,32 @@ export default function Home() {
       />
 
       <div className={styles.swiper}>
-        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="true">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Banner 1"></button>
+        <div id="carouselExampleIndicators" className="carousel slide carousel-fade" data-bs-ride="true">
+          <div className="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Banner 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-current="true" aria-label="Banner 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-current="true" aria-label="Banner 3"></button>
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
               <Image src="/assets/temp/banner1.jpeg" alt="Banner 1" layout='fill' className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>Blue Ashes Keycap Set</h5>
-                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.bannerButton}>BUY NOW!</a>
+                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true"><a>BUY NOW!</a></a>
               </div>
             </div>
-            <div class="carousel-item">
+            <div className="carousel-item">
               <Image src="/assets/temp/switch3.jpeg" alt="Banner 2" layout='fill' className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>Gateron Yellow</h5>
-                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.bannerButton}>BUY NOW!</a>
+                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true"><a>BUY NOW!</a></a>
               </div>
             </div>
-            <div class="carousel-item">
+            <div className="carousel-item">
               <Image src="/assets/temp/switch2.jpeg" alt="Banner 3" layout='fill' className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>JWICK Black Switch</h5>
-                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.bannerButton}>BUY NOW!</a>
+                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true"><a>BUY NOW!</a></a>
               </div>
             </div>
           </div>
@@ -98,7 +99,7 @@ export default function Home() {
       <div className={styles.sectionDiscord}>
         <h2 className={styles.title}>Join Our Discord!</h2>
         <p style={{fontSize: "18px"}}>so you won't miss anything!</p>
-        <a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.discordButton}>
+        <a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">
           <Row>
             <Col>
               <Image width='45' height='45' layout='fixed' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>

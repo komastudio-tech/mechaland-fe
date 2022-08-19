@@ -6,6 +6,7 @@ import { SEO, Skeleton } from '../../components';
 import { Row, Col } from "reactstrap";
 import { useStoreApi } from '../../context/useAPI';
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 export default function Join() {
 
@@ -28,7 +29,7 @@ export default function Join() {
 			<Image  width='700' height='500' src="/assets/join/join1.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
 			<a style={{marginBottom: "15px"}}>Click the green button which leads to our official Discord</a><br/>
 			<a>or</a><br/>
-			<a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.discordButton} style={{marginBottom: "50px"}}>
+			<a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.discordButton}`} role="button" aria-pressed="true" style={{marginBottom: "50px"}}>
 			<Row>
 				<Col>
 				<Image  width='45' height='45' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
