@@ -29,13 +29,13 @@ export const ApiProvider = ({ children }) => {
     )
  
     return (
-        <apiContext.Provider
+        <ApiContext.Provider
             value={{
                 axios: axiosInstance,
             }}
         >
             {children}
-        </apiContext.Provider>
+        </ApiContext.Provider>
     );
 };
 
