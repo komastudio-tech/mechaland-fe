@@ -38,7 +38,7 @@
 .navText {
   font-size: 15px;
   font-weight: 500;
-  color: #E5E4CC;
+  /* color: #E5E4CC; */
   display: inline-block;
   position: relative;
 }
@@ -49,10 +49,10 @@
 
 /* NEW NAVBAR */
 
-.navText {
-  /* font-size: 22px; */
+/* .navText {
+  font-size: 22px;
   color: #E5E4CC;
-}
+} */
 
 /* LOADING */
 
