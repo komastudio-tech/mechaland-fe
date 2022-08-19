@@ -84,65 +84,65 @@ export default function Navigation({ children }) {
 
   return (
     <>
-      <nav class="navbar navbar-expand-md fixed-top px-default" 
+      <nav className="navbar navbar-expand-md fixed-top px-default" 
         style={{
           background: `rgba(255, 255, 255, ${router.pathname == "/" ? backgroundTransparacy : 1})`,
           padding: `${padding}px 0px`,
           boxShadow: `rgb(0 0 0 / ${router.pathname == "/" ? boxShadow : 0}) 0px 0px 20px 6px`,
         }}
       >
-        <div class="container-fluid truly-center-grid" style={{alignItem: 'center'}}>
-            {/* <a class="navbar-brand truly-center-child" aria-current="page" href="/">
+        <div className="container-fluid truly-center-grid" style={{alignItem: 'center'}}>
+            {/* <a className="navbar-brand truly-center-child" aria-current="page" href="/">
               <Image
                 src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland"  style={router.pathname == "/" ? {filter: `invert(${backgroundTransparacy*100}%)`} : {}}
               />
             </a> */}
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-              <span class="navbar-toggler-icon"></span>
+            <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-start truly-center-child" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-              <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+            <div className="offcanvas offcanvas-start truly-center-child" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div className="offcanvas-header">
+                <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
                   <Image
                     src="/assets/mechaland_long.png" href="/" alt="Mechaland" width="50%" height="50%" style={{filter: `invert(100%)`}}
                   />
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-              <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-center flex-grow-1">
-                  <li class="nav-item mx-2">
-                    <a class="nav-link" aria-current="page" href="#">
+              <div className="offcanvas-body">
+                <ul className="navbar-nav justify-content-center flex-grow-1">
+                  <li className="nav-item mx-2">
+                    <a className="nav-link" aria-current="page" href="#">
                       <Image
                         src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland" width="200" height="60" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
                       />
                     </a>
                   </li>
-                  <li class="nav-item dropdown mx-2">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <li className="nav-item dropdown mx-2">
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>GROUP BUY</span>
                     </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">LIVE</a></li>
-                      <li><a class="dropdown-item" href="#">PERORDER</a></li>
-                      <li><a class="dropdown-item" href="#">INTEREST CHECK</a></li>
-                      <li><a class="dropdown-item" href="#">UPDATE</a></li>
+                    <ul className="dropdown-menu">
+                      <li><a className="dropdown-item" href="#">LIVE</a></li>
+                      <li><a className="dropdown-item" href="#">PERORDER</a></li>
+                      <li><a className="dropdown-item" href="#">INTEREST CHECK</a></li>
+                      <li><a className="dropdown-item" href="#">UPDATE</a></li>
                     </ul>
                   </li>
-                  <li class="nav-item mx-2">
-                    <a class="nav-link" aria-current="page" href="/instock"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>IN-STOCK</span></a>
+                  <li className="nav-item mx-2">
+                    <a className="nav-link" aria-current="page" href="/instock"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>IN-STOCK</span></a>
                   </li>
-                  <li class="nav-item dropdown mx-2">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <li className="nav-item dropdown mx-2">
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>UPCOMING</span>
                     </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/instock">IN-STOCK</a></li>
-                      <li><a class="dropdown-item" href="#">GROUP BUY</a></li>
+                    <ul className="dropdown-menu">
+                      <li><Link className="dropdown-item" href="/instock"IN-STOCK></Link></li>
+                      <li><Link className="dropdown-item" href="#">GROUP BUY</Link></li>
                     </ul>
                   </li>
-                  <li class="nav-item mx-2">
-                    <a class="nav-link" href="/join"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>DISCORD</span></a>
+                  <li className="nav-item mx-2">
+                    <a className="nav-link" href="/join"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>DISCORD</span></a>
                   </li>
                 </ul>
               </div>
