@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout/Index.js';
 import LoadingPage from '../layouts/LoadingPage';
 import styles from "../../styles/Home.module.css";
 
+
 function MyApp({ Component, pageProps }) {
   const [showLoading, setShowLoading] = useState(true);
 

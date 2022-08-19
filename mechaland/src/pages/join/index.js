@@ -53,7 +53,7 @@ export default function Join() {
 			<a>Check the “I have read and agree to the rules” box, and click submit.</a><br/><br/><br/>
 
 			<h5 className={styles.joinStep}>STEP 5:</h5>
-			<Image  width='270' height='1000' src="/assets/join/join5.png" alt="Mechaland Join 5" className={styles.joinPict} /><br/>
+			<Image  width='250' height='1000' src="/assets/join/join5.png" alt="Mechaland Join 5" className={styles.joinPict} /><br/>
 			<a>Click Interest-Check</a><br/><br/><br/>
 
 			<h5 className={styles.joinStep}>STEP 6:</h5>

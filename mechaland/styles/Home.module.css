@@ -197,8 +197,8 @@
 }
 
 .description {
-  padding: 36px 20% !important;
-  margin: 4rem 0 !important;
+  padding: 36px 20% 10px 20% !important;
+  margin: 4rem 0 1rem 0 !important;
   line-height: 1.5 !important;
 }
 
@@ -351,6 +351,10 @@
 
   .footerGap {
     padding-top: 20px !important;
+  }
+
+  .navText {
+    color: #000000 !important;
   }
 }
 
