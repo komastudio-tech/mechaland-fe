@@ -1,11 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../../styles/Home.module.css';
-import { SEO, Skeleton } from '../../components';
+import Image from 'next/image';
 import { Row, Col } from "reactstrap";
-// import { useStoreApi } from '../../context/useAPI';
+import { SEO, Skeleton } from '../../components';
 import { useState, useEffect, useRef } from 'react';
+import styles from '../../../styles/Home.module.css';
+// import { useStoreApi } from '../../context/useAPI';
 
 export default function Home() {
 

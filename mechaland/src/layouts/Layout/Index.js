@@ -1,42 +1,20 @@
-import { Skeleton } from '../../components';
-import { Row, Col } from "reactstrap";
-import { Divider } from 'antd';
-import styles from "../../../styles/Home.module.css";
-import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Link from 'next/link';
-
-// function FadeUp(props) {
-//   const [isActive, setActive] = React.useState(true);
-//   const domRef = React.useRef();
-//   React.useEffect(() => {
-//     const observer = new IntersectionObserver(entries => {
-//       entries.forEach(entry => {isActive ? setActive(entry.isIntersecting) : setActive(isActive)});
-//     });
-//     observer.observe(domRef.current);
-//     return () => observer.unobserve(domRef.current);
-//   }, []);
-//   return (
-//     <div
-//       className={isActive ? styles.fadeUpActive : styles.fadeUp}
-//       ref={domRef}
-//     >
-//       {props.children}
-//     </div>
-//   );
-// }
+import Image from 'next/image';
+import { Divider } from 'antd';
+import { Row, Col } from "reactstrap";
+import { useRouter } from 'next/router';
+import { Skeleton } from '../../components';
+import React, { useState, useEffect } from "react";
+import styles from "../../../styles/Home.module.css";
 
 export default function Navigation({ children }) {
-  // const { axios } = useStoreApi();
-  // const [load, setLoad] = useState(true);
   const router = useRouter();
   const [child] = useState(children);
   const [isOpen, setIsOpen] = useState(false);
   const [contacts, setContacts] = useState([{
     discord: "dGU2FyaUxd",
     tokopedia: "mechaland",
-    instagram: "mechaland_"
+    instagram: "mechaland.id"
   }]);
   const [clientWindowHeight, setClientWindowHeight] = useState("");
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);
@@ -54,15 +32,18 @@ export default function Navigation({ children }) {
     } catch (e) {
       console.error(e);
     }
-  });
+  }, []);
 
   useEffect(() => {
+    let backgroundTransparacyVar;
+    let paddingVar;
+    let boxShadowVar;
     try {
-      let backgroundTransparacyVar = clientWindowHeight / 600;
+      backgroundTransparacyVar = clientWindowHeight / 600;
     
       if (backgroundTransparacyVar < 1) {
-          let paddingVar = 30 - backgroundTransparacyVar * 20;
-          let boxShadowVar = backgroundTransparacyVar * 0.1;
+          paddingVar = 30 - backgroundTransparacyVar * 20;
+          boxShadowVar = backgroundTransparacyVar * 0.1;
           setBackgroundTransparacy(backgroundTransparacyVar);
           setPadding(paddingVar);
           setBoxShadow(boxShadowVar);
@@ -75,20 +56,6 @@ export default function Navigation({ children }) {
       console.error(e);
     }
   }, [clientWindowHeight]);
-
-  // const getData = async () => {
-  //   try {
-  //     const response = await axios.get("api/v1/footer/");
-  //     setContacts(response.data);
-  //   } catch (err) {
-  //     console.log("ERROR: ", err);
-  //   }
-  //   setLoad(false);
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
 
   return (
     <>

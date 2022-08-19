@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import Link from 'next/link';
 import Image from 'next/image';
 import { Divider } from 'antd';
-import styles from '../../../styles/Home.module.css';
-import { SEO, Skeleton } from '../../components';
 import { Row, Col } from "reactstrap";
-// import { useStoreApi } from '../../context/useAPI';
+import { SEO, Skeleton } from '../../components';
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import styles from '../../../styles/Home.module.css';
+// import { useStoreApi } from '../../context/useAPI';
 
 export default function Join() {
 
@@ -29,18 +29,18 @@ export default function Join() {
 			<Image  width='700' height='500' src="/assets/join/join1.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
 			<a style={{marginBottom: "15px"}}>Click the green button which leads to our official Discord</a><br/>
 			<a>or</a><br/>
-			<Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.discordButton}`} role="button" aria-pressed="true" style={{marginBottom: "50px"}}>
+			<Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.discordButton}`} role="button" aria-pressed="true">
 				<Row>
 					<Col>
-					<Image  width='45' height='45' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
+						<Image  width='45' height='45' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
 					</Col>
 					<Col>
-					<div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
+						<div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
 					</Col>
 				</Row>
 			</a></Link>
 
-			<h5 className={styles.joinStep}>STEP 2:</h5>
+			<h5 className={styles.joinStep} style={{marginTop: "50px"}}>STEP 2:</h5>
 			<Image  width='320' height='350' src="/assets/join/join2.png" alt="Mechaland Join 2" className={styles.joinPict} style={{maxWidth: "25vw"}}/><br/>
 			<a>Click Join button</a><br/><br/><br/>
 

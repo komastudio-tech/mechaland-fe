@@ -10,8 +10,9 @@ function MyApp({ Component, pageProps }) {
   const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
+    let load;
     try {
-      let load = setTimeout(() => {
+      load = setTimeout(() => {
         handleLoadFinish();
       }, [3000]);
     } catch (e) {
