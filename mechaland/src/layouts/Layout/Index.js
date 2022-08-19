@@ -112,7 +112,7 @@ export default function Navigation({ children }) {
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-center flex-grow-1">
                   <li class="nav-item mx-2">
-                    <a class="nav-link" aria-current="page" href="#">
+                    <a class="nav-link" aria-current="page" href="/">
                       <Image
                         src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland" width="200" height="60" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
                       />

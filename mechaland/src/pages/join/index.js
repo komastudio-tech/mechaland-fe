@@ -25,7 +25,7 @@ export default function Join() {
         </div>
         <div className={styles.section}>
 			<h5 className={styles.joinStep}>STEP 1:</h5>
-			<Image  width='700' height='500' src="/assets/join/join1.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
+			<Image  width='672' height='350' src="/assets/join/qk60_how_to.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
 			<a style={{marginBottom: "15px"}}>Click the green button which leads to our official Discord</a><br/>
 			<a>or</a><br/>
 			<a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.discordButton} style={{marginBottom: "50px"}}>

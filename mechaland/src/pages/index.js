@@ -25,9 +25,9 @@ export default function Home() {
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <Image src="/assets/temp/banner1.jpeg" alt="Banner 1" layout='fill' className={styles.swipe}/>
+              <Image src="/assets/temp/switch1.jpeg" alt="Banner 1" layout='fill' className={styles.swipe}/>
               <div className={styles.bannerContent}>
-                <h5 className={styles.bannerTitle}>Blue Ashes Keycap Set</h5>
+                <h5 className={styles.bannerTitle}>JWICK T1 Switch</h5>
                 <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.bannerButton}>BUY NOW!</a>
               </div>
             </div>
@@ -52,9 +52,9 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <div className={styles.desc}>
-            <h3 className={styles.title}>Get everything you need from Mechaland.com</h3>
+            <h3 className={styles.title}>Get everything you need from mechaland.co.id</h3>
             <p className={styles.openSans}>
-              We come from Indonesia. We provide and create innovative, unique and affordable customized mechanical keyboard things as we as peripheral products.
+              Selling many types of mechanical keyboard stuffs to make your typing experience more interesting.
             </p>
           </div>
         </div>
