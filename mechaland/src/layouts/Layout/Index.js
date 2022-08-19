@@ -77,143 +77,6 @@ export default function Navigation({ children }) {
 
   return (
     <>
-      {/* <nav
-        className="navbar navbar-expand-lg navbar-light fixed-top"
-        style={{
-          fontFamily: "'Arvo', serif",
-          fontWeight: "bold",
-          letterSpacing: "0.01rem",
-          color: "black",
-          background: `rgba(255, 255, 255)`,
-          padding: `10px 10px`,
-          boxShadow: `rgb(0 0 0 / 0.1) 0px 0px 20px 8px`,
-          top: `0`,
-        }}
-      >
-        <div className="container">
-          <a href="/">
-            <img
-              src="/assets/mechaland_long.png"
-              href="/"
-              alt="Mechaland"
-              width="10%"
-              height="10%"
-            />
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            onClick={()=>setIsOpen(!isOpen)}
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div
-            className={`collapse navbar-collapse justify-content-end ${isOpen ? "show ":""} animate-[open_0.5s_linear_forwards] wide:animate-none`}
-            id="navbarText"
-
-          >
-            <ul className="navbar-nav ml-auto  animate-[opac_0.7s_linear_forwards]">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span className={styles.navbar}>Group Test</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#" className={styles.navbar}>Group Test 1</a>
-                  <a class="dropdown-item" href="#" className={styles.navbar}>Group Test 2</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" className={styles.navbar}>Group Test 3</a>
-                </div>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#" style={{ margin: "0 10px", textAlign: "left" }}>
-                  <span className={styles.navText}>In Stock</span>
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span className={styles.navbar}>Upcoming Test</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#" className={styles.navbar}>Upcoming Test 1</a>
-                  <a class="dropdown-item" href="#" className={styles.navbar}>Upcoming Test 2</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" className={styles.navbar}>Upcoming Test 3</a>
-                </div>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href={`https://discord.gg/${contacts[0].discord}`} style={{ margin: "0 10px", textAlign: "left" }}>
-                  <span className={styles.navText}>Discord</span>
-                </a>
-              </li>
-              // ============================================================================================
-              <li className="nav-item">
-                <div className={styles.dropdown}>
-                  <a className="nav-link" href="/groupby" style={{ margin: "0 10px", textAlign: "left" }}>
-                    <span className={styles.navText}>Group By</span>               
-                  </a>
-                  <div className={styles.dropdownContent}>
-                    <a style={{ fontSize: "18px" }} href="/groupby">LIVE</a>
-                    <a style={{ fontSize: "18px" }} href="/groupby">PREORDER</a>
-                    <a style={{ fontSize: "18px" }} href="/groupby">INTEREST CHECK</a>
-                    <a style={{ fontSize: "18px" }} href="/groupby">UPDATE</a>
-                  </div> 
-                  <div className={styles.dropdownActive}>
-                    <a className="nav-link" href="/groupby" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>LIVE</span>               
-                    </a>
-                    <a className="nav-link" href="/groupby" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>PREORDER</span>               
-                    </a>
-                    <a className="nav-link" href="/groupby" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>INTEREST CHECK</span>               
-                    </a>
-                    <a className="nav-link" href="/groupby" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>UPDATE</span>               
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/instock" style={{ margin: "0 10px", textAlign: "left" }}>
-                  <span className={styles.navText}>In Stock</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <div className={styles.dropdown}>
-                  <a className="nav-link" href="/upcoming" style={{ margin: "0 10px", textAlign: "left" }}>
-                    <span className={styles.navText}>Upcoming</span>               
-                  </a>
-                  <div className={styles.dropdownContent}>
-                    <a style={{ fontSize: "18px" }} href="/upcoming">Upcoming 1</a>
-                    <a style={{ fontSize: "18px" }} href="/upcoming">Upcoming 2</a>
-                    <a style={{ fontSize: "18px" }} href="/upcoming">Upcoming 3</a>
-                    <a style={{ fontSize: "18px" }} href="/upcoming">Upcoming 4</a>
-                  </div> 
-                  <div className={styles.dropdownActive}>
-                    <a className="nav-link" href="/upcoming" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>Upcoming 1</span>               
-                    </a>
-                    <a className="nav-link" href="/upcoming" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>Upcoming 2</span>               
-                    </a>
-                    <a className="nav-link" href="/upcoming" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>Upcoming 3</span>               
-                    </a>
-                    <a className="nav-link" href="/upcoming" style={{ margin: "0 10px", textAlign: "left" }}>
-                      <span className={styles.navText}>Upcoming 4</span>               
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href={`https://discord.gg/${contacts[0].discord}`} style={{ margin: "0 10px", textAlign: "left" }}>
-                  <span className={styles.navText}>Discord</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav> */}
       <nav class="navbar navbar-expand-md fixed-top px-default" 
         style={{
           background: `rgba(255, 255, 255, ${backgroundTransparacy})`,
@@ -248,7 +111,7 @@ export default function Navigation({ children }) {
                   </ul>
                 </li>
                 <li class="nav-item mx-2">
-                  <a class="nav-link" aria-current="page" href="#"><span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>IN-STOCK</span></a>
+                  <a class="nav-link" aria-current="page" href="/instock"><span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>IN-STOCK</span></a>
                 </li>
                 <li class="nav-item mx-2">
                   <a class="nav-link" aria-current="page" href="#">
@@ -262,7 +125,7 @@ export default function Navigation({ children }) {
                     <span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>UPCOMING</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">IN-STOCK</a></li>
+                    <li><a class="dropdown-item" href="/instock">IN-STOCK</a></li>
                     <li><a class="dropdown-item" href="#">GROUP BUY</a></li>
                   </ul>
                 </li>
