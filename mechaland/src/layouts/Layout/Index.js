@@ -2,7 +2,6 @@ import { Skeleton } from '../../components';
 import { Row, Col } from "reactstrap";
 import { Divider } from 'antd';
 import styles from "../../../styles/Home.module.css";
-import { useStoreApi } from '../../context/useAPI';
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import Image from 'next/image';

@@ -4,7 +4,7 @@ import { Divider } from 'antd';
 import styles from '../../../styles/Home.module.css';
 import { SEO, Skeleton } from '../../components';
 import { Row, Col } from "reactstrap";
-import { useStoreApi } from '../../context/useAPI';
+// import { useStoreApi } from '../../context/useAPI';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
