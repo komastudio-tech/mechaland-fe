@@ -10,9 +10,13 @@ function MyApp({ Component, pageProps }) {
   const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
-    let load = setTimeout(() => {
-      handleLoadFinish();
-    }, [3000]);
+    try {
+      let load = setTimeout(() => {
+        handleLoadFinish();
+      }, [3000]);
+    } catch (e) {
+      console.error(e);
+    }
   }, []);
 
   const handleLoadFinish = () => {
@@ -22,7 +26,11 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+    try {
+      require("bootstrap/dist/js/bootstrap.bundle.min.js");
+    } catch (e) {
+      console.error(e);
+    }
   }, []);
 
   return (

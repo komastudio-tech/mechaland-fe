@@ -48,23 +48,31 @@ export default function Navigation({ children }) {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll); 
-    return () => window.removeEventListener("scroll", handleScroll);
+    try {
+      window.addEventListener("scroll", handleScroll); 
+      return () => window.removeEventListener("scroll", handleScroll);
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   useEffect(() => {
-    let backgroundTransparacyVar = clientWindowHeight / 600;
-  
-    if (backgroundTransparacyVar < 1) {
-        let paddingVar = 30 - backgroundTransparacyVar * 20;
-        let boxShadowVar = backgroundTransparacyVar * 0.1;
-        setBackgroundTransparacy(backgroundTransparacyVar);
-        setPadding(paddingVar);
-        setBoxShadow(boxShadowVar);
-    } else {
-      setBackgroundTransparacy(1);
-      setPadding(10);
-      setBoxShadow(0.1);
+    try {
+      let backgroundTransparacyVar = clientWindowHeight / 600;
+    
+      if (backgroundTransparacyVar < 1) {
+          let paddingVar = 30 - backgroundTransparacyVar * 20;
+          let boxShadowVar = backgroundTransparacyVar * 0.1;
+          setBackgroundTransparacy(backgroundTransparacyVar);
+          setPadding(paddingVar);
+          setBoxShadow(boxShadowVar);
+      } else {
+        setBackgroundTransparacy(1);
+        setPadding(10);
+        setBoxShadow(0.1);
+      }
+    } catch (e) {
+      console.error(e);
     }
   }, [clientWindowHeight]);
 
