@@ -26,7 +26,7 @@ export default function Join() {
         </div>
         <div className={styles.section}>
 			<h5 className={styles.joinStep}>STEP 1:</h5>
-			<Image  width='700' height='500' src="/assets/join/join1.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
+			<Image  width='672' height='350' src="/assets/join/qk60_how_to.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
 			<a style={{marginBottom: "15px"}}>Click the green button which leads to our official Discord</a><br/>
 			<a>or</a><br/>
 			<Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.discordButton}`} role="button" aria-pressed="true" style={{marginBottom: "50px"}}>
@@ -58,7 +58,8 @@ export default function Join() {
 
 			<h5 className={styles.joinStep}>STEP 6:</h5>
 			<Image  width='1000' height='550' src="/assets/join/join6.png" alt="Mechaland Join 6" className={styles.joinPict} style={{maxWidth: "80vw"}}/><br/>
-			<a>Click Interest-Check and follow the instruction on joining or buying the product(s)</a>
+			<a>Click Interest-Check and follow the instruction on joining or buying the product(s) or join our discord server by clicking the button below.</a><br/><br/>
+			<iframe src="https://discord.com/widget?id=951980041812729986&theme=dark" width="450" height="600" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </div>
       </main>
     </div>
