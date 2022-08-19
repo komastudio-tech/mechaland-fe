@@ -4,7 +4,8 @@ import { Divider } from 'antd';
 import styles from "../../../styles/Home.module.css";
 import { useStoreApi } from '../../context/useAPI';
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 // function FadeUp(props) {
 //   const [isActive, setActive] = React.useState(true);
@@ -57,8 +58,6 @@ export default function Navigation({ children }) {
     if (backgroundTransparacyVar < 1) {
         let paddingVar = 30 - backgroundTransparacyVar * 20;
         let boxShadowVar = backgroundTransparacyVar * 0.1;
-        console.log(backgroundTransparacyVar);
-        console.log(router.pathname, router.pathname == "/");
         setBackgroundTransparacy(backgroundTransparacyVar);
         setPadding(paddingVar);
         setBoxShadow(boxShadowVar);
@@ -92,23 +91,19 @@ export default function Navigation({ children }) {
           boxShadow: `rgb(0 0 0 / ${router.pathname == "/" ? boxShadow : 0}) 0px 0px 20px 6px`,
         }}
       >
-        <div class="container-fluid" style={{alignItem: 'center'}}>
-          <Row>
-            <Col>
-              <a class="navbar-brand" aria-current="page" href="/">
-                <img
-                  src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland" width="25%" height="25%" style={router.pathname == "/" ? {filter: `invert(${backgroundTransparacy*100}%)`} : {}}
-                />
-              </a>
-            </Col>
-            <Col>
+        <div class="container-fluid truly-center-grid" style={{alignItem: 'center'}}>
+            {/* <a class="navbar-brand truly-center-child" aria-current="page" href="/">
+              <Image
+                src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland"  style={router.pathname == "/" ? {filter: `invert(${backgroundTransparacy*100}%)`} : {}}
+              />
+            </a> */}
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas offcanvas-start truly-center-child" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                  <img
+                  <Image
                     src="/assets/mechaland_long.png" href="/" alt="Mechaland" width="50%" height="50%" style={{filter: `invert(100%)`}}
                   />
                 </h5>
@@ -116,13 +111,13 @@ export default function Navigation({ children }) {
               </div>
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-center flex-grow-1">
-                  {/* <li class="nav-item mx-2">
+                  <li class="nav-item mx-2">
                     <a class="nav-link" aria-current="page" href="#">
-                      <img
-                        src="/assets/mechaland_long.png" alt="Mechaland" width="30%" height="30%" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
+                      <Image
+                        src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland" width="200" height="60" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
                       />
                     </a>
-                  </li> */}
+                  </li>
                   <li class="nav-item dropdown mx-2">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>GROUP BUY</span>
@@ -152,8 +147,6 @@ export default function Navigation({ children }) {
                 </ul>
               </div>
             </div>
-            </Col>
-          </Row>
         </div>
       </nav>
 
@@ -168,16 +161,16 @@ export default function Navigation({ children }) {
             <Row style={{ padding: "5px 0" }} className={styles.footerCenter}>Shipping Policy</Row>
           </Col>
           <Col sm="12" md="5" className={styles.footerGap}>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://instagram.com/mechaland" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.png" alt="Mechaland Tokopedia" width="27" height="27"/> Instagram</a></Row>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer"><img src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a></Row>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer"><img src="/assets/discord.png" alt="Mechaland Tokopedia" width="27" height="27"/> Discord</a></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://instagram.com/mechaland" target="_blank" rel="noopener noreferrer"><Image src="/assets/instagram.png" alt="Mechaland Tokopedia" width="27" height="27"/> Instagram</a></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer"><Image src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer"><Image src="/assets/discord.png" alt="Mechaland Tokopedia" width="27" height="27"/> Discord</a></Row>
           </Col>
           <Col sm="12" md="5" style={{ textAlign: "right" }} className={styles.footerGap}>
             <a className={styles.footerCenter}>&copy; 2022, Mechaland<br/>All Rights Reserved</a>
             <Row>
               <Col className={styles.footerCenter}>
-                <img src="/assets/bca.png" href="/" alt="BCA" width="160" height="60" className={styles.footerImg}/>
-                <img src="/assets/gopay.png" href="/" alt="GOPAY" width="205" height="60" className={styles.footerImg}/>
+                <Image src="/assets/bca.png" href="/" alt="BCA" width="160" height="60" className={styles.footerImage}/>
+                <Image src="/assets/gopay.png" href="/" alt="GOPAY" width="205" height="60" className={styles.footerImage}/>
               </Col>
             </Row>
           </Col>

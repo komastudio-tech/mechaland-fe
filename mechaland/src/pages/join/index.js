@@ -25,13 +25,13 @@ export default function Join() {
         </div>
         <div className={styles.section}>
 			<h5 className={styles.joinStep}>STEP 1:</h5>
-			<img src="/assets/join/join1.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
+			<Image  width='700' height='500' src="/assets/join/join1.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
 			<a style={{marginBottom: "15px"}}>Click the green button which leads to our official Discord</a><br/>
 			<a>or</a><br/>
 			<a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.discordButton} style={{marginBottom: "50px"}}>
 			<Row>
 				<Col>
-				<img src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
+				<Image  width='45' height='45' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
 				</Col>
 				<Col>
 				<div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
@@ -40,23 +40,23 @@ export default function Join() {
 			</a>
 
 			<h5 className={styles.joinStep}>STEP 2:</h5>
-			<img src="/assets/join/join2.png" alt="Mechaland Join 2" className={styles.joinPict} style={{maxWidth: "25vw"}}/><br/>
+			<Image  width='320' height='350' src="/assets/join/join2.png" alt="Mechaland Join 2" className={styles.joinPict} style={{maxWidth: "25vw"}}/><br/>
 			<a>Click Join button</a><br/><br/><br/>
 
 			<h5 className={styles.joinStep}>STEP 3:</h5>
-			<img src="/assets/join/join3.png" alt="Mechaland Join 3" className={styles.joinPict} style={{maxWidth: "80vw"}}/><br/>
+			<Image  width='1000' height='550' src="/assets/join/join3.png" alt="Mechaland Join 3" className={styles.joinPict} style={{maxWidth: "80vw"}}/><br/>
 			<a>Click the Check mark icon and also Complete button to gain access to the server</a><br/><br/><br/>
 
 			<h5 className={styles.joinStep}>STEP 4:</h5>
-			<img src="/assets/join/join4.png" alt="Mechaland Join 4" className={styles.joinPict} /><br/>
+			<Image  width='450' height='450' src="/assets/join/join4.png" alt="Mechaland Join 4" className={styles.joinPict} /><br/>
 			<a>Check the “I have read and agree to the rules” box, and click submit.</a><br/><br/><br/>
 
 			<h5 className={styles.joinStep}>STEP 5:</h5>
-			<img src="/assets/join/join5.png" alt="Mechaland Join 5" className={styles.joinPict} /><br/>
+			<Image  width='270' height='1000' src="/assets/join/join5.png" alt="Mechaland Join 5" className={styles.joinPict} /><br/>
 			<a>Click Interest-Check</a><br/><br/><br/>
 
 			<h5 className={styles.joinStep}>STEP 6:</h5>
-			<img src="/assets/join/join6.png" alt="Mechaland Join 6" className={styles.joinPict} style={{maxWidth: "80vw"}}/><br/>
+			<Image  width='1000' height='550' src="/assets/join/join6.png" alt="Mechaland Join 6" className={styles.joinPict} style={{maxWidth: "80vw"}}/><br/>
 			<a>Click Interest-Check and follow the instruction on joining or buying the product(s)</a>
         </div>
       </main>

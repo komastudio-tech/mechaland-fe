@@ -29,7 +29,7 @@ export default function Home() {
 						<Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
@@ -39,7 +39,7 @@ export default function Home() {
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>JWICK Black Switch (Linear - PCB Mount) - 58.5g</h5>
@@ -49,7 +49,7 @@ export default function Home() {
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>Gateron Yellow (Linier - Plate Mount)</h5>
@@ -59,7 +59,7 @@ export default function Home() {
 						<Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
@@ -69,7 +69,7 @@ export default function Home() {
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>JWICK Black Switch (Linear - PCB Mount) - 58.5g</h5>
@@ -79,7 +79,7 @@ export default function Home() {
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>Gateron Yellow (Linier - Plate Mount)</h5>
@@ -89,7 +89,7 @@ export default function Home() {
 						<Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
@@ -99,7 +99,7 @@ export default function Home() {
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>JWICK Black Switch (Linear - PCB Mount) - 58.5g</h5>
@@ -109,7 +109,7 @@ export default function Home() {
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
 							<a href='https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount' target="_blank" rel="noopener noreferrer">
 								<Row className={styles.textCenter}>
-									<img src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
+									<Image width='30' height='30' layout='responsive' src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
 								</Row>
 								<Row className={styles.textCenter}>
 									<h5 className={styles.featured}>Gateron Yellow (Linier - Plate Mount)</h5>
