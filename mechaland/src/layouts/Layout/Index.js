@@ -99,6 +99,13 @@ export default function Navigation({ children }) {
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-center flex-grow-1">
+                {/* <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="#">
+                    <img
+                      src="/assets/mechaland_long.png" alt="Mechaland" width="30%" height="30%" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
+                    />
+                  </a>
+                </li> */}
                 <li class="nav-item dropdown mx-2">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>GROUP BUY</span>
@@ -113,13 +120,6 @@ export default function Navigation({ children }) {
                 <li class="nav-item mx-2">
                   <a class="nav-link" aria-current="page" href="/instock"><span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>IN-STOCK</span></a>
                 </li>
-                <li class="nav-item mx-2">
-                  <a class="nav-link" aria-current="page" href="#">
-                    {/* <img
-                      src="/assets/mechaland_long.png" alt="Mechaland" width="30%" height="30%" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
-                    /> */}
-                  </a>
-                </li>
                 <li class="nav-item dropdown mx-2">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>UPCOMING</span>
@@ -130,7 +130,7 @@ export default function Navigation({ children }) {
                   </ul>
                 </li>
                 <li class="nav-item mx-2">
-                  <a class="nav-link" href={`https://discord.gg/dGU2FyaUxd`} target="_blank" rel="noopener noreferrer"><span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>DISCORD</span></a>
+                  <a class="nav-link" href="/join"><span className={styles.navText} style={{filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`}}>DISCORD</span></a>
                 </li>
               </ul>
             </div>
@@ -144,19 +144,19 @@ export default function Navigation({ children }) {
         <Divider className={styles.divider} />
         <Row style={{ padding: "10px 0" }}>
           <Col sm="12" md="2">
-            <Row style={{ padding: "5px 0" }}>Privacy Policy</Row>
-            <Row style={{ padding: "5px 0" }}>Terms of Service</Row>
-            <Row style={{ padding: "5px 0" }}>Shipping Policy</Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}>Privacy Policy</Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}>Terms of Service</Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}>Shipping Policy</Row>
           </Col>
-          <Col sm="12" md="5">
-            <Row style={{ padding: "4px 0" }}><a href={`https://instagram.com/mechaland_}`} target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.png" alt="Mechaland Tokopedia" width="27" height="27"/> Instagram</a></Row>
-            <Row style={{ padding: "4px 0" }}><a href={`https://www.tokopedia.com/mechaland}`} target="_blank" rel="noopener noreferrer"><img src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a></Row>
-            <Row style={{ padding: "4px 0" }}><a href={`https://discord.gg/dGU2FyaUxd`} target="_blank" rel="noopener noreferrer"><img src="/assets/discord.png" alt="Mechaland Tokopedia" width="27" height="27"/> Discord</a></Row>
+          <Col sm="12" md="5" className={styles.footerGap}>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://instagram.com/mechaland" target="_blank" rel="noopener noreferrer"><img src="/assets/instagram.png" alt="Mechaland Tokopedia" width="27" height="27"/> Instagram</a></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer"><img src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer"><img src="/assets/discord.png" alt="Mechaland Tokopedia" width="27" height="27"/> Discord</a></Row>
           </Col>
-          <Col sm="12" md="5" style={{ textAlign: "right" }}>
-            <a>&copy; 2022, Mechaland<br/>All Rights Reserved</a>
+          <Col sm="12" md="5" style={{ textAlign: "right" }} className={styles.footerGap}>
+            <a className={styles.footerCenter}>&copy; 2022, Mechaland<br/>All Rights Reserved</a>
             <Row>
-              <Col>
+              <Col className={styles.footerCenter}>
                 <img src="/assets/bca.png" href="/" alt="BCA" width="160" height="60" className={styles.footerImg}/>
                 <img src="/assets/gopay.png" href="/" alt="GOPAY" width="205" height="60" className={styles.footerImg}/>
               </Col>
@@ -164,32 +164,6 @@ export default function Navigation({ children }) {
           </Col>
         </Row>
       </footer>
-      {/* <footer className={styles.footer}>
-        <hr style="width:10%"/>
-        <Row style={{ padding: "10px 0" }}>
-          <Col sm="12" md="1">
-            <a>Privacy Policy</a>
-            <a>Terms of Service</a>
-            <a>Shipping Policy</a>
-          </Col>``
-          <Col sm="12" md="8">
-            <a href={`https://instagram.com/${contacts[0].instagram}`} target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i> Instagram</a>
-            <a href={`https://www.tokopedia.com/${contacts[0].tokopedia}`} target="_blank" rel="noopener noreferrer"><img src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a>
-            <a href={`https://discord.gg/${contacts[0].discord}`} target="_blank" rel="noopener noreferrer"><i class="bi bi-discord"></i> Discord</a>
-          </Col>
-          <Col sm="12" md="3" style={{ textAlign: "right" }}>
-            <a>&copy; 2022, Mechaland<br/>All Rights Reserved</a>
-            <Row>
-              <Col>
-                <img src="/assets/bca.png" href="/" alt="BCA" width="135" height="50" className={styles.footerImg}/>
-              </Col>
-              <Col>
-                <img src="/assets/gopay.png" href="/" alt="GOPAY" width="135" height="50" className={styles.footerImg}/>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </footer> */}
     </>
   );
 }

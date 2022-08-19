@@ -98,13 +98,13 @@ export default function Home() {
       <div className={styles.sectionDiscord}>
         <h2 className={styles.title}>Join Our Discord!</h2>
         <p style={{fontSize: "18px"}}>so you won't miss anything!</p>
-        <a href={'https://discord.gg/dGU2FyaUxd'} target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.discordButton}>
+        <a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" class="btn btn-lg active" role="button" aria-pressed="true" className={styles.discordButton}>
           <Row>
-            <Col sm="4">
-              <img src="/assets/discord_white.png" alt="Mechaland Discord" width="48" height="48"/>
+            <Col>
+              <img src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
             </Col>
-            <Col sm="8">
-              <div style={{fontSize: '14px'}}>JOIN OUR</div><div style={{fontSize: '18px'}}>DISCORD</div>
+            <Col>
+              <div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
             </Col>
           </Row>
         </a>
