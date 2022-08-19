@@ -25,7 +25,7 @@ export default function Home() {
           </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <Image src="/assets/temp/banner1.jpeg" alt="Banner 1" layout="fill" className={styles.swipe}/>
+              <Image src="/assets/temp/switch1.jpeg" alt="Banner 1" layout="fill" className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>Blue Ashes Keycap Set</h5>
                 <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW!</a></Link>
