@@ -29,16 +29,16 @@ export default function Join() {
 			<Image  width='700' height='500' src="/assets/join/join1.png" alt="Mechaland Join 1" className={styles.joinPict}/><br/>
 			<a style={{marginBottom: "15px"}}>Click the green button which leads to our official Discord</a><br/>
 			<a>or</a><br/>
-			<a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.discordButton}`} role="button" aria-pressed="true" style={{marginBottom: "50px"}}>
-			<Row>
-				<Col>
-				<Image  width='45' height='45' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
-				</Col>
-				<Col>
-				<div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
-				</Col>
-			</Row>
-			</a>
+			<Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.discordButton}`} role="button" aria-pressed="true" style={{marginBottom: "50px"}}>
+				<Row>
+					<Col>
+					<Image  width='45' height='45' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
+					</Col>
+					<Col>
+					<div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
+					</Col>
+				</Row>
+			</a></Link>
 
 			<h5 className={styles.joinStep}>STEP 2:</h5>
 			<Image  width='320' height='350' src="/assets/join/join2.png" alt="Mechaland Join 2" className={styles.joinPict} style={{maxWidth: "25vw"}}/><br/>

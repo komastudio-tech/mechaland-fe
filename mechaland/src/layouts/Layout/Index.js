@@ -88,7 +88,7 @@ export default function Navigation({ children }) {
       <nav className="navbar navbar-expand-md fixed-top px-default" 
         style={{
           background: `rgba(255, 255, 255, ${router.pathname == "/" ? backgroundTransparacy : 1})`,
-          padding: `${padding}px 0px`,
+          padding: `${router.pathname == "/" ? padding : 8}px 0px`,
           boxShadow: `rgb(0 0 0 / ${router.pathname == "/" ? boxShadow : 0}) 0px 0px 20px 6px`,
         }}
       >
@@ -113,37 +113,37 @@ export default function Navigation({ children }) {
               <div className="offcanvas-body">
                 <ul className="navbar-nav justify-content-center flex-grow-1">
                   <li className="nav-item mx-2">
-                    <a className="nav-link" aria-current="page" href="#">
+                    <Link href="/"><a className="nav-link" aria-current="page">
                       <Image
-                        src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland" width="200" height="60" style={{filter: `invert(${backgroundTransparacy*100}%)`}}
+                        src={router.pathname == "/" ? "/assets/mechaland_long.png" : "/assets/mechaland_bl.png"} alt="Mechaland" width="200" height="60" style={router.pathname == "/" ? {filter: `invert(${backgroundTransparacy*100}%)`} : {}}
                       />
-                    </a>
+                    </a></Link>
                   </li>
                   <li className="nav-item dropdown mx-2">
-                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <Link href="#"><a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>GROUP BUY</span>
-                    </a>
+                    </a></Link>
                     <ul className="dropdown-menu">
-                      <li><a className="dropdown-item" href="#">LIVE</a></li>
-                      <li><a className="dropdown-item" href="#">PERORDER</a></li>
-                      <li><a className="dropdown-item" href="#">INTEREST CHECK</a></li>
-                      <li><a className="dropdown-item" href="#">UPDATE</a></li>
+                      <li><Link href="#"><a className="dropdown-item">LIVE</a></Link></li>
+                      <li><Link href="#"><a className="dropdown-item">PERORDER</a></Link></li>
+                      <li><Link href="#"><a className="dropdown-item">INTEREST CHECK</a></Link></li>
+                      <li><Link href="#"><a className="dropdown-item">UPDATE</a></Link></li>
                     </ul>
                   </li>
                   <li className="nav-item mx-2">
-                    <a className="nav-link" aria-current="page" href="/instock"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>IN-STOCK</span></a>
+                    <Link href="/instock"><a className="nav-link" aria-current="page"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>IN-STOCK</span></a></Link>
                   </li>
                   <li className="nav-item dropdown mx-2">
-                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <Link href="#"><a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>UPCOMING</span>
-                    </a>
+                    </a></Link>
                     <ul className="dropdown-menu">
-                      <li><a className="dropdown-item" href="/instock">IN-STOCK</a></li>
-                      <li><a className="dropdown-item" href="#">GROUP BUY</a></li>
+                      <li><Link href="/instock"><a className="dropdown-item">IN-STOCK</a></Link></li>
+                      <li><Link href="#"><a className="dropdown-item">GROUP BUY</a></Link></li>
                     </ul>
                   </li>
                   <li className="nav-item mx-2">
-                    <a className="nav-link" href="/join"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>DISCORD</span></a>
+                    <Link href="/join"><a className="nav-link"><span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>DISCORD</span></a></Link>
                   </li>
                 </ul>
               </div>
@@ -162,9 +162,9 @@ export default function Navigation({ children }) {
             <Row style={{ padding: "5px 0" }} className={styles.footerCenter}>Shipping Policy</Row>
           </Col>
           <Col sm="12" md="5" className={styles.footerGap}>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://instagram.com/mechaland" target="_blank" rel="noopener noreferrer"><Image src="/assets/instagram.png" alt="Mechaland Tokopedia" width="27" height="27"/> Instagram</a></Row>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer"><Image src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a></Row>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer"><Image src="/assets/discord.png" alt="Mechaland Tokopedia" width="27" height="27"/> Discord</a></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://instagram.com/mechaland.id"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/instagram.png" alt="Mechaland Tokopedia" width="27" height="27"/> Instagram</a></Link></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a></Link></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/discord.png" alt="Mechaland Tokopedia" width="27" height="27"/> Discord</a></Link></Row>
           </Col>
           <Col sm="12" md="5" style={{ textAlign: "right" }} className={styles.footerGap}>
             <a className={styles.footerCenter}>&copy; 2022, Mechaland<br/>All Rights Reserved</a>

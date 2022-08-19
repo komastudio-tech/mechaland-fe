@@ -29,21 +29,21 @@ export default function Home() {
               <Image src="/assets/temp/banner1.jpeg" alt="Banner 1" layout='fill' className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>Blue Ashes Keycap Set</h5>
-                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true"><a>BUY NOW!</a></a>
+                <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW!</a></Link>
               </div>
             </div>
             <div className="carousel-item">
               <Image src="/assets/temp/switch3.jpeg" alt="Banner 2" layout='fill' className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>Gateron Yellow</h5>
-                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true"><a>BUY NOW!</a></a>
+                <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW!</a></Link>
               </div>
             </div>
             <div className="carousel-item">
               <Image src="/assets/temp/switch2.jpeg" alt="Banner 3" layout='fill' className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>JWICK Black Switch</h5>
-                <a href="https://www.tokopedia.com/mechaland" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true"><a>BUY NOW!</a></a>
+                <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW!</a></Link>
               </div>
             </div>
           </div>
@@ -63,34 +63,34 @@ export default function Home() {
           <h2 className={styles.title}>Featured Collection</h2>
           <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
-              <a href='https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount' target="_blank" rel="noopener noreferrer">
+              <Link href='https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount'><a target="_blank" rel="noopener noreferrer">
                 <Row className={styles.textCenter}>
                   <Image width='30' height='30' layout='responsive' src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
                 </Row>
                 <Row className={styles.textCenter}>
                   <h5 className={styles.featured}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
                 </Row>
-              </a>
+              </a></Link>
             </Col>
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
-              <a href='https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g' target="_blank" rel="noopener noreferrer">
+              <Link href='https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g'><a target="_blank" rel="noopener noreferrer">
                 <Row className={styles.textCenter}>
                   <Image width='30' height='30' layout='responsive' src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
                 </Row>
                 <Row className={styles.textCenter}>
                   <h5 className={styles.featured}>JWICK Black Switch (Linear - PCB Mount) - 58.5g</h5>
                 </Row>
-              </a>
+              </a></Link>
             </Col>
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
-              <a href='https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount' target="_blank" rel="noopener noreferrer">
+              <Link href='https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount'><a target="_blank" rel="noopener noreferrer">
                 <Row className={styles.textCenter}>
                   <Image width='30' height='30' layout='responsive' src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
                 </Row>
                 <Row className={styles.textCenter}>
                   <h5 className={styles.featured}>Gateron Yellow (Linier - Plate Mount)</h5>
                 </Row>
-              </a>
+              </a></Link>
             </Col>
           </Row>
         </div>
@@ -99,7 +99,7 @@ export default function Home() {
       <div className={styles.sectionDiscord}>
         <h2 className={styles.title}>Join Our Discord!</h2>
         <p style={{fontSize: "18px"}}>so you won't miss anything!</p>
-        <a href="https://discord.com/invite/Y5Bj6rK9He" target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">
+        <Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">
           <Row>
             <Col>
               <Image width='45' height='45' layout='fixed' src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
@@ -108,7 +108,7 @@ export default function Home() {
               <div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
             </Col>
           </Row>
-        </a>
+        </a></Link>
       </div>
     </div>
   )

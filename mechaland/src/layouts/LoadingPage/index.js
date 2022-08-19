@@ -36,7 +36,7 @@ const LoadingPage = () => {
       {/* <img src={counter == 0 ? "/common/assets/syklikLogo/0.png" : counter == 1 ? "/common/assets/syklikLogo/1.png" : counter == 2 ? "/common/assets/syklikLogo/2.png" : counter == 3 ? "/common/assets/syklikLogo/3.png" : counter == 4 ? "/common/assets/syklikLogo/4.png" : counter == 5 ? "/common/assets/syklikLogo/5.png" : "/common/assets/syklikLogo/6.png"} className={styles.load}/> */}
       <div style={{ paddingTop: '38vh' }}>
         <div className="spinner-border" role="status" style={{width: '10vw', height: '10vw', color: '#44564B', display: 'block', margin: 'auto', maxWidth: '100vw', maxHeight: '100vh'}}>
-          <span className="sr-only">Loading...</span>
+          {/* <span className="sr-only">Loading...</span> */}
         </div>
       </div>
       
