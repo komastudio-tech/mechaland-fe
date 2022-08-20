@@ -25,21 +25,21 @@ export default function Home() {
           </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <Image src="/assets/temp/switch1.jpeg" alt="Banner 1" layout="fill" className={styles.swipe}/>
+              <Image src="/assets/temp/switch1.jpeg" alt="Banner 1" layout="fill" className={styles.swipe} />
               <div className={styles.bannerContent}>
-                <h5 className={styles.bannerTitle}>Blue Ashes Keycap Set</h5>
+                <h5 className={styles.bannerTitle}>JWICK T1 Switch</h5>
                 <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW!</a></Link>
               </div>
             </div>
             <div className="carousel-item">
-              <Image src="/assets/temp/switch3.jpeg" alt="Banner 2" layout="fill" className={styles.swipe}/>
+              <Image src="/assets/temp/switch3.jpeg" alt="Banner 2" layout="fill" className={styles.swipe} />
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>Gateron Yellow</h5>
                 <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW!</a></Link>
               </div>
             </div>
             <div className="carousel-item">
-              <Image src="/assets/temp/switch2.jpeg" alt="Banner 3" layout="fill" className={styles.swipe}/>
+              <Image src="/assets/temp/switch2.jpeg" alt="Banner 3" layout="fill" className={styles.swipe} />
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>JWICK Black Switch</h5>
                 <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW!</a></Link>
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
         <div className={styles.sectionFeatured}>
           <h2 className={styles.title}>Featured Collection</h2>
-          <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+          <Row style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
               <Link href="https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount"><a target="_blank" rel="noopener noreferrer">
                 <Row className={styles.textCenter}>
@@ -97,11 +97,11 @@ export default function Home() {
 
       <div className={styles.sectionDiscord}>
         <h2 className={styles.title}>Join Our Discord!</h2>
-        <p style={{fontSize: "18px"}}>so you won&apos;t miss anything!</p>
+        <p style={{ fontSize: "18px" }}>so you won&apos;t miss anything!</p>
         <Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">
           <Row>
             <Col>
-              <Image width="45" height="45" layout="fixed" src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage}/>
+              <Image width="45" height="45" layout="fixed" src="/assets/discord_white.png" alt="Mechaland Discord" className={styles.discordImage} />
             </Col>
             <Col>
               <div className={styles.discordJoin}>JOIN OUR</div><div className={styles.discordDC}>DISCORD</div>
