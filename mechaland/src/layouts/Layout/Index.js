@@ -107,10 +107,10 @@ export default function Navigation({ children }) {
                       <span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>GROUP BUY</span>
                     </a></Link>
                     <ul className="dropdown-menu">
-                      <li><Link href="#"><a className="dropdown-item">LIVE</a></Link></li>
-                      <li><Link href="#"><a className="dropdown-item">PERORDER</a></Link></li>
-                      <li><Link href="#"><a className="dropdown-item">INTEREST CHECK</a></Link></li>
-                      <li><Link href="#"><a className="dropdown-item">UPDATE</a></Link></li>
+                      <li><Link href="/live"><a className="dropdown-item">LIVE</a></Link></li>
+                      <li><Link href="/preorder"><a className="dropdown-item">PREORDER</a></Link></li>
+                      <li><Link href="/interest"><a className="dropdown-item">INTEREST CHECK</a></Link></li>
+                      <li><Link href="/update"><a className="dropdown-item">UPDATE</a></Link></li>
                     </ul>
                   </li>
                   <li className="nav-item mx-2">
@@ -122,7 +122,7 @@ export default function Navigation({ children }) {
                     </a></Link>
                     <ul className="dropdown-menu">
                       <li><Link href="/instock"><a className="dropdown-item">IN-STOCK</a></Link></li>
-                      <li><Link href="#"><a className="dropdown-item">GROUP BUY</a></Link></li>
+                      <li><Link href="/groupbuy"><a className="dropdown-item">GROUP BUY</a></Link></li>
                     </ul>
                   </li>
                   <li className="nav-item mx-2">

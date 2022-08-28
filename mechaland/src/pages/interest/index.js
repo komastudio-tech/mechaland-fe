@@ -12,17 +12,14 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <SEO
-        title="In-Stock | Mechaland"
+        title="Interest Check | Mechaland"
         description="Mechaland"
       />
 
       <main className={styles.main}>
         <div className={styles.titlePage}>
           <div className={styles.desc}>
-            <h1 className={styles.title}>In Stock</h1>
-            <p className={styles.subTitle}>
-                These items are in stock and ready to ship!
-            </p>
+            <h1 className={styles.title}>INTEREST CHECK</h1>
           </div>
         </div>
         <div className={styles.sectionInstock} style={{marginTop: "2px !important"}}>

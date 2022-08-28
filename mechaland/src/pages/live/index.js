@@ -12,17 +12,20 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <SEO
-        title="In-Stock | Mechaland"
+        title="Live | Mechaland"
         description="Mechaland"
       />
 
       <main className={styles.main}>
         <div className={styles.titlePage}>
           <div className={styles.desc}>
-            <h1 className={styles.title}>In Stock</h1>
+            <h1 className={styles.title}>LIVE</h1>
             <p className={styles.subTitle}>
-                These items are in stock and ready to ship!
+				Do not purchase different pre-orders/GBs/in stock in one order, we cannot guarantee which stock will be out of stock while we are waiting for all products to arrive.
             </p>
+			<p className={styles.subTitle}>
+				If any of the products are out of stock, we will remove them from your order and refund you.
+			</p>
           </div>
         </div>
         <div className={styles.sectionInstock} style={{marginTop: "2px !important"}}>

@@ -52,7 +52,7 @@ export default function Home() {
         <div className={styles.description}>
           <div className={styles.desc}>
             <h3 className={styles.title}>Get everything you need from Mechaland.com</h3>
-            <p className={styles.openSans}>
+            <p className={styles.subTitle}>
               We come from Indonesia. We provide and create innovative, unique and affordable customized mechanical keyboard things as we as peripheral products.
             </p>
           </div>

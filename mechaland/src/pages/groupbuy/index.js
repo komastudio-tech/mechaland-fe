@@ -12,16 +12,16 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <SEO
-        title="In-Stock | Mechaland"
+        title="Group Buy | Mechaland"
         description="Mechaland"
       />
 
       <main className={styles.main}>
         <div className={styles.titlePage}>
           <div className={styles.desc}>
-            <h1 className={styles.title}>In Stock</h1>
+            <h1 className={styles.title}>GROUPBUY</h1>
             <p className={styles.subTitle}>
-                These items are in stock and ready to ship!
+				<b>What is a GroupBuy?</b><br/>Group buy is a process through which we, as a community, can use our collective buying power to purchase goods at a reduced price or at all. Some Group Buys take advantage of price breaks to offer products to the community at a more desirable price, often at the cost of the GB organizer's time/efforts.
             </p>
           </div>
         </div>
