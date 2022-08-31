@@ -21,7 +21,7 @@ export default function Home() {
           <div className={styles.desc}>
             <h1 className={styles.title}>GROUPBUY</h1>
             <p className={styles.subTitle}>
-				<b>What is a GroupBuy?</b><br/>Group buy is a process through which we, as a community, can use our collective buying power to purchase goods at a reduced price or at all. Some Group Buys take advantage of price breaks to offer products to the community at a more desirable price, often at the cost of the GB organizer's time/efforts.
+				<b>What is a GroupBuy?</b><br/>Group buy is a process through which we, as a community, can use our collective buying power to purchase goods at a reduced price or at all. Some Group Buys take advantage of price breaks to offer products to the community at a more desirable price, often at the cost of the GB organizer&apos;s time/efforts.
             </p>
           </div>
         </div>
