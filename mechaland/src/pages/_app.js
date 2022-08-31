@@ -27,13 +27,13 @@ function MyApp({ Component, pageProps }) {
     }, [300]);
   }
 
-  useEffect(() => {
-    try {
-      require("bootstrap/dist/js/bootstrap.bundle.min.js");
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }, []);
 
   return (
     <div className={styles.container}>
