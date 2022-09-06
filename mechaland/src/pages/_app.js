@@ -2,6 +2,7 @@
 import '../../styles/globals.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from 'react';
+import { ApiProvider } from '@/context/useAPI';
 import Layout from '../layouts/Layout/Index.js';
 import LoadingPage from '../layouts/LoadingPage';
 import styles from "../../styles/Home.module.css";
@@ -27,24 +28,26 @@ function MyApp({ Component, pageProps }) {
     }, [300]);
   }
 
-  // useEffect(() => {
-  //   try {
-  //     require("bootstrap/dist/js/bootstrap.bundle.min.js");
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }, []);
+  useEffect(() => {
+    try {
+      require("bootstrap/dist/js/bootstrap.bundle.min.js");
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
 
   return (
-    <div className={styles.container}>
-      { showLoading ? 
-        <LoadingPage />
-        :
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      }
-    </div>
+    <ApiProvider>
+      <div className={styles.container}>
+        { showLoading ? 
+          <LoadingPage />
+          :
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        }
+      </div>
+    </ApiProvider>
   )
 }
 

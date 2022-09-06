@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -86,4 +90,18 @@ a {
 .navbar-toggler-icon {
   width: 1.1em !important;
   height: 1em !important;
+}
+
+.dropdown-toggle::after {
+  border-top: .3em solid #E5E4CC !important;
+  border-right: .3em solid transparent !important;
+  border-left: .3em solid transparent !important;
+}
+
+.dropdown-toggle:hover {
+  color: #44564B !important;
+}
+
+.dropdown-toggle:hover:after {
+  border-top: .3em solid #44564B !important;
 }

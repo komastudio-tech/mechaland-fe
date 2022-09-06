@@ -145,16 +145,16 @@ export default function Navigation({ children }) {
             <Row style={{ padding: "5px 0" }} className={styles.footerCenter}>Shipping Policy</Row>
           </Col>
           <Col sm="12" md="5" className={styles.footerGap}>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://instagram.com/mechaland.id"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/instagram.png" alt="Mechaland Tokopedia" width="27" height="27"/> <span style={{marginBottom: "10px"}}>Instagram</span></a></Link></Row>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="27" height="27"/> Tokopedia</a></Link></Row>
-            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/discord.png" alt="Mechaland Tokopedia" width="27" height="27"/> Discord</a></Link></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://instagram.com/mechaland.id"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/instagram.png" alt="Mechaland Tokopedia" width="22" height="22" /> Instagram</a></Link></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/tokopedia.png" alt="Mechaland Tokopedia" width="22" height="22"/> Tokopedia</a></Link></Row>
+            <Row style={{ padding: "5px 0" }} className={styles.footerCenter}><Link href="https://discord.com/invite/Y5Bj6rK9He"><a target="_blank" rel="noopener noreferrer"><Image src="/assets/discord.png" alt="Mechaland Tokopedia" width="22" height="22"/> Discord</a></Link></Row>
           </Col>
           <Col sm="12" md="5" style={{ textAlign: "right" }} className={styles.footerGap}>
             <a className={styles.footerCenter}>&copy; 2022, Mechaland<br/>All Rights Reserved</a>
             <Row>
               <Col className={styles.footerCenter}>
-                <Image src="/assets/bca.png" href="/" alt="BCA" width="160" height="60" className={styles.footerImage}/>
-                <Image src="/assets/gopay.png" href="/" alt="GOPAY" width="205" height="60" className={styles.footerImage}/>
+                {/* <Image src="/assets/bca.png" href="/" alt="BCA" width="160" height="60" className={styles.footerImage}/>
+                <Image src="/assets/gopay.png" href="/" alt="GOPAY" width="205" height="60" className={styles.footerImage}/> */}
               </Col>
             </Row>
           </Col>
