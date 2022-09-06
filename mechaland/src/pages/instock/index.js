@@ -114,7 +114,7 @@ export default function Instock() {
             :
             <Row>
               {datas.map((item, idx) =>
-                <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
+                <Col key={`instock-${idx}`} sm="12" md="4" style={{ margin: "3vw 0" }}>
                   <Link href={item.buy_text}>
                     <a target="_blank" rel="noopener noreferrer">
                       <Row className={styles.textCenter}>

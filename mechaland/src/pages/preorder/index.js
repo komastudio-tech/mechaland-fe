@@ -102,7 +102,7 @@ export default function Preorder() {
             :
             <Row>
               {datas.map((item) =>
-                <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
+                <Col key={`preorder-${idx}`} sm="12" md="4" style={{ margin: "3vw 0" }}>
                   <Link href={item.buy_text}>
                     <a target="_blank" rel="noopener noreferrer">
                       <Row className={styles.textCenter}>

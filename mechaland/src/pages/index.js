@@ -71,9 +71,9 @@ export default function Home() {
             <>
               {hero.map((idx) =>
                 {idx === 0 ?
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} className="active" aria-current="true" aria-label={`banner-${idx}`}></button>
+                  <button key={`slide-${idx}`} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} className="active" aria-current="true" aria-label={`banner-${idx}`}></button>
                 :
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} aria-current="true" aria-label={`banner-${idx}`}></button>
+                  <button key={`slide-${idx}`} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} aria-current="true" aria-label={`banner-${idx}`}></button>
                 }
               )}
             </>
@@ -94,7 +94,7 @@ export default function Home() {
             :
             <>
               {hero.map((item, idx) =>
-                <div className="carousel-item active">
+                <div key={`hero-${idx}`} className="carousel-item active">
                   <Image src={item.image} alt={`banner-${idx}`} layout="fill" className={styles.swipe}/>
                   <div className={styles.bannerContent}>
                     <h5 className={styles.bannerTitle}>{item.text}</h5>
@@ -170,7 +170,7 @@ export default function Home() {
             :
             <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
               {featured.map((item, idx) =>
-                <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
+                <Col key={`featured-${idx}`} sm="12" md="4" style={{ margin: "3vw 0" }}>
                   <Link href={item.buy_text}>
                     <a target="_blank" rel="noopener noreferrer">
                       <Row className={styles.textCenter}>
