@@ -14,7 +14,7 @@
 }
 
 .section {
-  margin: 45px 0 !important;
+  margin: 45px 0 0 0!important;
   text-align: center !important;
 }
 
@@ -43,6 +43,27 @@
   line-height: 1.5 !important;
 }
 
+.textLink:hover {
+  text-decoration: underline !important;
+}
+
+.backButton:hover {
+  cursor: pointer;
+  color: #44564B;
+}
+
+.left {
+  text-align: left;
+}
+
+.black {
+  color: #000000;
+}
+
+.pt20 {
+  padding-top: 10vh;
+}
+
 /* OLD NAVBAR */
 
 .navText {
@@ -67,7 +88,15 @@
 /* LOADING */
 
 .load {
-  width: 10rem !important; height: 10rem !important; color: #44564B !important; display: block !important; padding-top: 35vh !important; margin-left: auto !important; margin-right: auto !important; max-width: 100% !important; max-height: 100% !important;
+  width: 10rem !important;
+  height: 10rem !important;
+  color: #44564B !important;
+  display: block !important;
+  padding-top: 35vh !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
 }
 
 /* FOOTER */
@@ -82,7 +111,7 @@
   width: 100vw !important;
   position: absolute !important;
   z-index: 1 !important;
-  padding: 2rem 12vw !important;
+  padding: 0rem 12vw !important;
 }
 
 .footer a {
@@ -313,6 +342,118 @@
   text-align: center !important;
 }
 
+/* DETAILS */
+
+.details {
+  object-fit: cover !important;
+  width: 111px !important;
+  height: 111px !important;
+  filter: brightness(75%)
+}
+
+.details.active {
+  object-fit: cover !important;
+  width: 580px !important;
+  height: 580px !important;
+  filter: brightness(75%)
+}
+
+.detailsPrice {
+  font-size: 1.5vw;
+  color: #000000;
+}
+
+.detailsLabel {
+  font-size: 1.1vw;
+  color: #000000;
+}
+
+.detailsSpecs {
+  font-size: 1.1vw;
+  color: #000000;
+}
+
+.detailsSelect {
+  position: relative;
+  width: 50%;
+  font-family: 'Inter', sans-serif;
+  padding: 8px 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #000;
+  border-radius: 6px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  -moz-appearance: menulist; /* Firefox */
+  -webkit-appearance: menulist; /* Safari and Chrome */
+  appearance: menulist;
+}
+
+.detailsQuantity {
+  width: 20%;
+  padding: 4px 10px;
+  text-align: center;
+  border-radius: 0;
+  border: 1px solid #000;
+  border-style: solid none;
+}
+
+.detailsQButton {
+  padding: 4px 5px;
+}
+
+.detailsButton {
+  background-color: #fff !important;
+  border: 2px solid #44564B !important;
+  color: #44564B !important;
+  padding: 10px 32px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  font-weight: bolder;
+  display: inline-block !important;
+  margin: 4px 2px !important;
+  cursor: pointer !important;
+  border-radius: 6px !important;
+}
+
+.detailsButton:hover {
+  color: #E5E4CC !important;
+  background-color: #44564B !important;
+}
+
+.othersPict {
+  padding: "0";
+}
+
+.othersText {
+  margin-top: 1vw !important;
+  margin-bottom: 1vw !important;
+  font-size: 1.3vw;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #000000 !important;
+}
+
+.othersText:hover {
+  color: #44564B !important;
+}
+
+/* UPDATE */
+
+.updateDivider {
+  margin: 1vw 20vw !important;
+  /* margin-bottom: 25px !important; */
+  border-top: 2px solid #000 !important;
+}
+
+.updateTitle {
+  color: #000;
+  text-align: left;
+}
+
 /* RESPONSIVE */
 
 @media (min-width: 2200px) {
@@ -331,11 +472,35 @@
   .bannerTitle {
     font-size: 45px !important;
   }
+
+  .detailsSelect {
+    font-size: 0.8rem;
+  }
+
+  .detailsTitle {
+    font-size: 1.75vw;
+  }
+
+  .detailsPrice {
+    font-size: 1.6vw;
+  }
+  
+  .detailsLabel {
+    font-size: 1.2vw;
+  }
+  
+  .detailsSpecs {
+    font-size: 1.2vw;
+  }
 }
 
 @media (max-width: 991px) {
   .bannerTitle {
     font-size: 35px !important;
+  }
+
+  .othersText {
+    font-size: 1.4vw;
   }
 }
 
@@ -362,6 +527,10 @@
     padding: 6px 22px !important;
   }
 
+  .detailsButton {
+    padding: 6px 22px !important;
+  }
+
   .footerCenter {
     display: block !important;
     margin: 0 auto !important;
@@ -375,6 +544,34 @@
 
   .navText {
     color: #000000 !important;
+  }
+
+  .detailsSelect {
+    font-size: 1rem;
+  }
+
+  .detailsTitle {
+    font-size: 3.2vw;
+  }
+
+  .detailsPrice {
+    font-size: 2.5vw;
+  }
+  
+  .detailsLabel {
+    font-size: 2vw;
+  }
+  
+  .detailsSpecs {
+    font-size: 2vw;
+  }
+
+  .othersPict {
+    padding: 3vw 50px 10px 50px;
+  }
+
+  .othersText {
+    font-size: 2.8vw;
   }
 }
 
@@ -396,6 +593,26 @@
   .discordDC {
     font-size: 14px !important;
   }
+
+  .detailsSelect {
+    font-size: 0.8rem;
+  }
+
+  .detailsTitle {
+    font-size: 3.2vw;
+  }
+
+  .detailsPrice {
+    font-size: 3vw;
+  }
+  
+  .detailsLabel {
+    font-size: 2.5vw;
+  }
+  
+  .detailsSpecs {
+    font-size: 2vw;
+  }
 }
 
 @media (max-width: 510px) {
@@ -406,13 +623,36 @@
   .footertitle {
       font-size: 1rem !important;
   }
+
   .footer {
       padding: 2rem 10vw !important;
+  }
+
+  .othersText {
+    font-size: 3vw;
   }
 }
 
 @media (max-width: 430px) {
+  .detailsSelect {
+    font-size: 0.9rem;
+  }
 
+  .detailsTitle {
+    font-size: 4.2vw;
+  }
+
+  .detailsPrice {
+    font-size: 4.2vw;
+  }
+  
+  .detailsLabel {
+    font-size: 3.7vw;
+  }
+  
+  .detailsSpecs {
+    font-size: 3.5vw;
+  }
 }
 
 /* DEFAULT */
