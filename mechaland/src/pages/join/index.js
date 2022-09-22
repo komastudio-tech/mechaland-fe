@@ -9,7 +9,6 @@ import { useState, useEffect, useRef } from 'react';
 import styles from '../../../styles/Home.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
-// import { useStoreApi } from '../../context/useAPI';
 
 export default function Join() {
 	const router = useRouter();

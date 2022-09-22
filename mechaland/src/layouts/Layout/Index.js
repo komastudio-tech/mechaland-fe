@@ -3,14 +3,11 @@ import Image from 'next/image';
 import { Divider } from 'antd';
 import { Row, Col } from "reactstrap";
 import { useRouter } from 'next/router';
-import { Skeleton } from '../../components';
 import React, { useState, useEffect } from "react";
 import styles from "../../../styles/Home.module.css";
 
 export default function Navigation({ children }) {
   const router = useRouter();
-  const [child] = useState(children);
-  const [isOpen, setIsOpen] = useState(false);
   const [contacts, setContacts] = useState([{
     discord: "dGU2FyaUxd",
     tokopedia: "mechaland",
@@ -110,7 +107,7 @@ export default function Navigation({ children }) {
                       <li><Link href="/live"><a className="dropdown-item">LIVE</a></Link></li>
                       <li><Link href="/preorder"><a className="dropdown-item">PREORDER</a></Link></li>
                       <li><Link href="/interest"><a className="dropdown-item">INTEREST CHECK</a></Link></li>
-                      <li><Link href="/update"><a className="dropdown-item">UPDATE</a></Link></li>
+                      <li><Link href="/updates"><a className="dropdown-item">UPDATE</a></Link></li>
                     </ul>
                   </li>
                   <li className="nav-item mx-2">

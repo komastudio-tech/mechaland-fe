@@ -43,7 +43,9 @@ export default function Home() {
 
     try {
       const response = await axios.get("api/v1/featured_collection/");
-      await setFeatured(response.data);
+      const data = (response.data).slice(0,3);
+      console.log("Featured Sliced: ", data);
+      await setFeatured(data);
     } catch (err) {
       console.log("ERROR: ", err);
     }
@@ -78,9 +80,6 @@ export default function Home() {
               )}
             </>
           }
-            {/* <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Banner 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-current="true" aria-label="Banner 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-current="true" aria-label="Banner 3"></button> */}
           </div>
           <div className="carousel-inner">
           { load ?
@@ -104,27 +103,6 @@ export default function Home() {
               )}
             </>
           }
-            {/* <div className="carousel-item active">
-              <Image src="/assets/temp/banner1.jpeg" alt="Banner 1" layout="fill" className={styles.swipe}/>
-              <div className={styles.bannerContent}>
-                <h5 className={styles.bannerTitle}>Blue Ashes Keycap Set</h5>
-                <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW !</a></Link>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <Image src="/assets/temp/switch3.jpeg" alt="Banner 2" layout="fill" className={styles.swipe}/>
-              <div className={styles.bannerContent}>
-                <h5 className={styles.bannerTitle}>Gateron Yellow</h5>
-                <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW !</a></Link>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <Image src="/assets/temp/switch2.jpeg" alt="Banner 3" layout="fill" className={styles.swipe}/>
-              <div className={styles.bannerContent}>
-                <h5 className={styles.bannerTitle}>JWICK Black Switch</h5>
-                <Link href="https://www.tokopedia.com/mechaland"><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW !</a></Link>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -185,36 +163,6 @@ export default function Home() {
               )}
             </Row>
           }
-            {/* <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
-              <Link href="https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount"><a target="_blank" rel="noopener noreferrer">
-                <Row className={styles.textCenter}>
-                  <Image width="30" height="30" layout="responsive" src="/assets/temp/switch1.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
-                </Row>
-                <Row className={styles.textCenter}>
-                  <h5 className={styles.featured}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
-                </Row>
-              </a></Link>
-            </Col>
-            <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
-              <Link href="https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g"><a target="_blank" rel="noopener noreferrer">
-                <Row className={styles.textCenter}>
-                  <Image width="30" height="30" layout="responsive" src="/assets/temp/switch2.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
-                </Row>
-                <Row className={styles.textCenter}>
-                  <h5 className={styles.featured}>JWICK Black Switch (Linear - PCB Mount) - 58.5g</h5>
-                </Row>
-              </a></Link>
-            </Col>
-            <Col sm="12" md="4" style={{ margin: "3vw 0" }}>
-              <Link href="https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount"><a target="_blank" rel="noopener noreferrer">
-                <Row className={styles.textCenter}>
-                  <Image width="30" height="30" layout="responsive" src="/assets/temp/switch3.jpeg" alt="Mechaland Featured" className={styles.featuredPict} />
-                </Row>
-                <Row className={styles.textCenter}>
-                  <h5 className={styles.featured}>Gateron Yellow (Linier - Plate Mount)</h5>
-                </Row>
-              </a></Link>
-            </Col> */}
         </div>
       </main>
 

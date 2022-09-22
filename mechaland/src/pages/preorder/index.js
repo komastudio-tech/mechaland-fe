@@ -12,18 +12,21 @@ export default function Preorder() {
 	const [load, setLoad] = useState(true);
 	const [datas, setDatas] = useState([
 		{
+			id: "1",
 			text:"JWICK T1 Stem Switch (Tactile - PCB Mount)",
 			buy_text:"https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount",
 			image:"/assets/temp/switch1.jpeg",
 			price:"Rp.4.500"
 		},
 		{
+			id: "2",
 			text:"JWICK Black Switch (Linear - PCB Mount) - 58.5g",
 			buy_text:"https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g",
 			image:"/assets/temp/switch2.jpeg",
 			price:"Rp.3.000"
 		},
 		{
+			id: "3",
 			text:"Gateron Yellow (Linier - Plate Mount)",
 			buy_text:"https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount",
 			image:"/assets/temp/switch3.jpeg",
@@ -33,7 +36,7 @@ export default function Preorder() {
 
 	const getData = async () => {
 	  try {
-			const response = await axios.get("api/v1/preorder/");
+			const response = await axios.get("api/v1/products/?category=PREORDER");
 			await setDatas(response.data);
 	  } catch (err) {
 			console.log("ERROR: ", err);
@@ -101,10 +104,10 @@ export default function Preorder() {
             </Row>
             :
             <Row>
-              {datas.map((item) =>
+              {datas.map((item, idx) =>
                 <Col key={`preorder-${idx}`} sm="12" md="4" style={{ margin: "3vw 0" }}>
-                  <Link href={item.buy_text}>
-                    <a target="_blank" rel="noopener noreferrer">
+                  <Link href={`/details/?id=${item.id}&status=true`}>
+                    <a>
                       <Row className={styles.textCenter}>
                         <Image width="30" height="30" layout="responsive" src={item.image} alt={item.text} className={styles.featuredPict} />
                       </Row>
