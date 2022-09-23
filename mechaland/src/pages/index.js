@@ -36,6 +36,7 @@ export default function Home() {
   const getData = async () => {
     try {
       const response = await axios.get("api/v1/hero_image/");
+      console.log("Hero Image: ", response.data);
       await setHero(response.data);
     } catch (err) {
       console.log("ERROR: ", err);
@@ -71,12 +72,8 @@ export default function Home() {
             <></>
             :
             <>
-              {hero.map((idx) =>
-                {idx === 0 ?
-                  <button key={`slide-${idx}`} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} className="active" aria-current="true" aria-label={`banner-${idx}`}></button>
-                :
-                  <button key={`slide-${idx}`} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} aria-current="true" aria-label={`banner-${idx}`}></button>
-                }
+              {hero.map((item, idx) =>
+                <button key={`slide-${idx}`} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} className={idx == 0 ? `active` : ``} aria-current="true" aria-label={`${item.text}`}></button>
               )}
             </>
           }
@@ -93,7 +90,7 @@ export default function Home() {
             :
             <>
               {hero.map((item, idx) =>
-                <div key={`hero-${idx}`} className="carousel-item active">
+                <div key={`hero-${idx}`} className={idx == 0 ? `carousel-item active` : `carousel-item`}>
                   <Image src={item.image} alt={`banner-${idx}`} layout="fill" className={styles.swipe}/>
                   <div className={styles.bannerContent}>
                     <h5 className={styles.bannerTitle}>{item.text}</h5>

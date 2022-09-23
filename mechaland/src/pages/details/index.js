@@ -223,7 +223,7 @@ export default function Details(id, status) {
     }
 
     if (price == null) {
-      await rupiah(datas[0].list_variant[0].price)
+      await rupiah(datas[0].list_variant[0].id)
     }
 
     setLoad(false);
@@ -262,6 +262,12 @@ export default function Details(id, status) {
     setPrice(result);
   }
 
+  const variant = () => {
+    var val = $('#variantDropdown').find(":selected").val();
+    console.log("Variant: ", val);
+    rupiah(val);
+  }
+
   return (
     <div className={styles.container}>
       <SEO
@@ -273,121 +279,117 @@ export default function Details(id, status) {
         <div className={styles.sectionInstock} style={{marginTop: "2px !important"}}>
           <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Col sm="12" md="6" style={{ margin: "4vw 0", padding: "4vw" }}>
-              <Swiper
-                style={{
-                  "--swiper-navigation-color": "#fff",
-                  "--swiper-pagination-color": "#fff",
-                }}
-                loop={true}
-                spaceBetween={10}
-                navigation={true}
-                thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className="mySwiper2"
-              >
-                {datas[0].list_photos.map((item, idx) =>
-                  <SwiperSlide key={`pict-${idx}`}>
-                    <img src={`${item.image}`} />
-                  </SwiperSlide>
-                )}
-                {/* <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </SwiperSlide> */}
-              </Swiper>
+                {load ?
+                  <Swiper
+                    style={{
+                      "--swiper-navigation-color": "#fff",
+                      "--swiper-pagination-color": "#fff",
+                    }}
+                    loop={true}
+                    spaceBetween={10}
+                    navigation={true}
+                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    className="mySwiper2"
+                  >
+                    <SwiperSlide>
+                      <Skeleton height="420px" width="420px" />
+                    </SwiperSlide>
+                  </Swiper>
+                :
+                  <Swiper
+                    style={{
+                      "--swiper-navigation-color": "#fff",
+                      "--swiper-pagination-color": "#fff",
+                    }}
+                    loop={true}
+                    spaceBetween={10}
+                    navigation={true}
+                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    className="mySwiper2"
+                  >
+                    {datas[0].list_photos.map((item, idx) =>
+                      <SwiperSlide key={`pict-${idx}`}>
+                        <img src={`${item.image}`} />
+                      </SwiperSlide>
+                    )}
+                  </Swiper>
+                }
               <br/>
-              <Swiper
-                onSwiper={setThumbsSwiper}
-                spaceBetween={10}
-                slidesPerView={5}
-                freeMode={true}
-                watchSlidesProgress={true}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className="mySwiper"
-              >
-                {datas[0].list_photos.map((item, idx) =>
-                  <SwiperSlide key={`picts-${idx}`}>
-                    <img src={`${item.image}`} />
+              {load ?
+                <Swiper
+                  onSwiper={setThumbsSwiper}
+                  spaceBetween={10}
+                  slidesPerView={5}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
+                    <Skeleton height="60px" width="60px" />
                   </SwiperSlide>
-                )}
-                {/* <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </SwiperSlide> */}
-              </Swiper>
+                  <SwiperSlide>
+                    <Skeleton height="60px" width="60px" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Skeleton height="60px" width="60px" />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Skeleton height="60px" width="60px" />
+                  </SwiperSlide>
+                </Swiper>
+              :
+                <Swiper
+                  onSwiper={setThumbsSwiper}
+                  spaceBetween={10}
+                  slidesPerView={5}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  className="mySwiper"
+                >
+                  {datas[0].list_photos.map((item, idx) =>
+                    <SwiperSlide key={`picts-${idx}`}>
+                      <img src={`${item.image}`} />
+                    </SwiperSlide>
+                  )}
+                </Swiper>
+                }
             </Col>
             {status?
             <Col sm="12" md="6" style={{ margin: "4vw 0", padding: "4vw" }}>
                 <Row className={`${styles.textCenter} ${styles.black}`}>
-                  <h3 className={styles.detailsTitle}>{datas[0].title}</h3>
+                  {load ? 
+                  <>
+                    <Skeleton height="35px" width="350px" style={{margin: '3px 0'}}/>
+                  </>
+                  : 
+                    <h3 className={styles.detailsTitle}>{datas[0].title}</h3>
+                  }
                 </Row>
                 <Row className={styles.textCenter}>
-                  <p className={styles.detailsPrice}>{price == null ? "Rp -" : price}</p>
+                  {load ? 
+                    <Skeleton height="25px" width="200px" />
+                  : 
+                    <p className={styles.detailsPrice}>{price == null ? "Rp -" : price}</p>
+                  }
                 </Row>
                 <Row className={styles.textCenter} style={{paddingBottom: "15px", paddingTop: "25px"}}>
                   <p className={styles.detailsLabel} style={{marginBottom: "1px"}}>variant</p>
                   <Col style={{display: "flex", alignItems: "center", textAlign: "center", justifyContent: "center"}}>
-                    <select className={`${styles.detailsSelect} form-control`} onChange={() => rupiah(value)}>
-                      {datas[0].list_variant.map((item, idx) =>
-                        {idx === 0 ?
-                          <option key={`variant-${idx}`} value={item.id} selected>1</option>
-                        :
-                          <option key={`variant-${idx}`} value={item.id}>2</option>
-                        }
-                      )}
-                    </select>
+                    {load ? 
+                      <select className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
+                        <option key={`variantLoad`} value="null" selected><Skeleton height="40px" width="100px" /></option>
+                      </select>
+                    :
+                      <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
+                        {datas[0].list_variant.map((item, idx) =>
+                          <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.name}</option>
+                        )}
+                      </select>
+                    }
                   </Col>
                 </Row>
                 <Row>
@@ -410,21 +412,37 @@ export default function Details(id, status) {
                   <Link href={`${datas[0].description}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">TOKOPEDIA</a></Link>
                 </Row>
                 <Row style={{ margin: "1vw 0", textAlign: "left"}}>
-                  <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0"}}>specs:</p>
+                  <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0"}}>Specs:</p>
+                  {load ?
+                  <ul>
+                    <li key={`specLoad1`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="150px" /></li>
+                    <li key={`specLoad2`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="200px" /></li>
+                    <li key={`specLoad3`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="180px" /></li>
+                  </ul>
+                  :
                   <ul style={{listStyle: "inside"}}>
                     {datas[0].list_specs.map((item, idx) =>
                       <li key={`spec-${idx}`} className={styles.detailsSpecs}>{item.specs}</li>
                     )}
                   </ul>
+                  }
                 </Row>
             </Col>
             :
             <Col sm="12" md="6" style={{ margin: "4vw 0", padding: "4vw" }}>
                 <Row className={`${styles.textCenter} ${styles.black}`}>
-                  <h3 className={styles.detailsTitle}>{datas[0].title}</h3>
+                  {load ? 
+                    <Skeleton height="55px" width="350px" />
+                  : 
+                    <h3 className={styles.detailsTitle}>{datas[0].title}</h3>
+                  }
                 </Row>
                 <Row className={styles.textCenter}>
-                  <p className={styles.detailsPrice}>Rp -</p>
+                  {load ? 
+                    <Skeleton height="45px" width="100px" />
+                  : 
+                    <p className={styles.detailsPrice}>Rp -</p>
+                  }
                 </Row>
                 <Row className={styles.textCenter} style={{paddingBottom: "15px", paddingTop: "25px"}}>
                   <Link href={"/join"}><a className={`${styles.detailsLabel} ${styles.textLink}`} style={{marginBottom: "1px", color: "#44564B"}}>How To Join?</a></Link>
@@ -437,70 +455,75 @@ export default function Details(id, status) {
           <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
               <h3 className={`${styles.black} ${styles.pt20}`}>You May Also Like</h3>
           </Row>
+          {load ? 
           <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-            {others.map((item, idx) =>
-              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-                <Link href={`${item.description}`}>
-                  <a target="_blank" rel="noopener noreferrer">
-                    <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                      <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.list_photos[0].name} className={styles.featuredPict} />
-                    </Row>
-                    <Row className={styles.textCenter}>
-                      <h5 className={styles.othersText}>{item.title}</h5>
-                    </Row>
-                  </a>
-                </Link>
-              </Col>
-            )}
-            {/* <Col key={`others-1`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-              <Link href="https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount">
-                <a target="_blank" rel="noopener noreferrer">
+            <Col key={`othersLoad1`} sm="12" md="3" style={{ margin: "3vw 0" }}>
+              <Link href={`#`}>
+                <a>
                   <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                    <Image width="30" height="30" layout="responsive" src="/assets/temp/switch1.jpeg" alt="JWICK T1 Stem Switch (Tactile - PCB Mount)" className={styles.featuredPict} />
+                    <Skeleton height="210px" width="210px" style={{margin: '4px 0'}}/>
                   </Row>
                   <Row className={styles.textCenter}>
-                    <h5 className={styles.othersText}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
+                    <Skeleton height="30px" width="150px" />
                   </Row>
                 </a>
               </Link>
             </Col>
-            <Col key={`others-1`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-              <Link href="https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount">
-                <a target="_blank" rel="noopener noreferrer">
+            <Col key={`othersLoad2`} sm="12" md="3" style={{ margin: "3vw 0" }}>
+              <Link href={`#`}>
+                <a>
                   <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                    <Image width="30" height="30" layout="responsive" src="/assets/temp/switch1.jpeg" alt="JWICK T1 Stem Switch (Tactile - PCB Mount)" className={styles.featuredPict} />
+                    <Skeleton height="210px" width="210px" style={{margin: '4px 0'}}/>
                   </Row>
                   <Row className={styles.textCenter}>
-                    <h5 className={styles.othersText}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
+                    <Skeleton height="30px" width="150px" />
                   </Row>
                 </a>
               </Link>
             </Col>
-            <Col key={`others-1`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-              <Link href="https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount">
-                <a target="_blank" rel="noopener noreferrer">
+            <Col key={`othersLoad3`} sm="12" md="3" style={{ margin: "3vw 0" }}>
+              <Link href={`#`}>
+                <a>
                   <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                    <Image width="30" height="30" layout="responsive" src="/assets/temp/switch1.jpeg" alt="JWICK T1 Stem Switch (Tactile - PCB Mount)" className={styles.featuredPict} />
+                    <Skeleton height="210px" width="210px" style={{margin: '4px 0'}}/>
                   </Row>
                   <Row className={styles.textCenter}>
-                    <h5 className={styles.othersText}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
+                    <Skeleton height="30px" width="150px" />
                   </Row>
                 </a>
               </Link>
             </Col>
-            <Col key={`others-1`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-              <Link href="https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount">
-                <a target="_blank" rel="noopener noreferrer">
+            <Col key={`othersLoad4`} sm="12" md="3" style={{ margin: "3vw 0" }}>
+              <Link href={`#`}>
+                <a>
                   <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                    <Image width="30" height="30" layout="responsive" src="/assets/temp/switch1.jpeg" alt="JWICK T1 Stem Switch (Tactile - PCB Mount)" className={styles.featuredPict} />
+                    <Skeleton height="210px" width="210px" style={{margin: '4px 0'}}/>
                   </Row>
                   <Row className={styles.textCenter}>
-                    <h5 className={styles.othersText}>JWICK T1 Stem Switch (Tactile - PCB Mount)</h5>
+                    <Skeleton height="30px" width="150px" />
                   </Row>
                 </a>
               </Link>
-            </Col> */}
+            </Col>
           </Row>
+          :
+          <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+          {others.map((item, idx) =>
+            <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0" }}>
+              <Link href={`${item.description}`}>
+                <a>
+                  <Row className={`${styles.textCenter} ${styles.othersPict}`}>
+                    <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.list_photos[0].name} className={styles.featuredPict} />
+                  </Row>
+                  <Row className={styles.textCenter}>
+                    <h5 className={styles.othersText}>{item.title}</h5>
+                  </Row>
+                </a>
+              </Link>
+            </Col>
+          )}
+          </Row>
+          }
         </div>
       </main>
     </div>
