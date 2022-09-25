@@ -1,4 +1,4 @@
 import SEO from './SEO';
-import Skeleton from './Skeleton'
+import Skeleton from './Skeleton';
 
 export { SEO, Skeleton }

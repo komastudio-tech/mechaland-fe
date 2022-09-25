@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Link from 'next/link';
 import Image from 'next/image';
 import { Row, Col } from "reactstrap";
+import { useRouter } from 'next/router';
 import { SEO, Skeleton } from '../../components';
 import { useStoreApi } from '../../context/useAPI';
 import { useState, useEffect, useRef } from 'react';
@@ -18,7 +19,9 @@ import "swiper/css/thumbs";
 
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
-export default function Details(id, status) {
+export default function Details() {
+  const router = useRouter();
+  const {id, status} = router.query;
   const [load, setLoad] = useState(true);
   const { axios } = useStoreApi();
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -189,37 +192,30 @@ export default function Details(id, status) {
 	]);
 
 	const getData = async () => {
-    if (status) {
-      try {
-        const response = await axios.get(`api/v1/products/?id=${id}`);
-        await setDatas(response.data);
-        await setCategory(response.data[0].category);
-      } catch (err) {
-        console.log("ERROR: ", err);
+    try {
+      const response = [];
+      {status ? 
+        response = await axios.get(`api/v1/products/?id=${id}`)
+      :
+        response = await axios.get(`api/v1/interestcheck/?id=${id}`);
       }
+      await setDatas(response.data);
+      await setCategory(response.data[0].category);
+    } catch (err) {
+      console.log("ERROR: ", err);
+    }
 
-      try {
-        const response = await axios.get(`api/v1/products/?category=${category}`);
-        const res = (response.data).slice(0,4);
-        await setOthers(res);
-      } catch (err) {
-        console.log("ERROR: ", err);
+    try {
+      const response = [];
+      {status ? 
+        response = await axios.get(`api/v1/products/?category=${category}`)
+      :
+        response = await axios.get(`api/v1/interestcheck/`);
       }
-    } else {
-      try {
-        const response = await axios.get(`api/v1/interestcheck/?id=${id}`);
-        await setDatas(response.data);
-      } catch (err) {
-        console.log("ERROR: ", err);
-      }
-
-      try {
-        const response = await axios.get(`api/v1/interestcheck/`);
-        const res = (response.data).slice(0,4);
-        await setOthers(res);
-      } catch (err) {
-        console.log("ERROR: ", err);
-      }
+      const res = (response.data).slice(0,4);
+      await setOthers(res);
+    } catch (err) {
+      console.log("ERROR: ", err);
     }
 
     if (price == null) {
@@ -297,6 +293,7 @@ export default function Details(id, status) {
                     </SwiperSlide>
                   </Swiper>
                 :
+                  (status ?
                   <Swiper
                     style={{
                       "--swiper-navigation-color": "#fff",
@@ -315,6 +312,23 @@ export default function Details(id, status) {
                       </SwiperSlide>
                     )}
                   </Swiper>
+                  :
+                  <Swiper
+                    style={{
+                      "--swiper-navigation-color": "#fff",
+                      "--swiper-pagination-color": "#fff",
+                    }}
+                    loop={true}
+                    spaceBetween={10}
+                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    className="mySwiper2"
+                  >
+                    <SwiperSlide key={`pictInterest`}>
+                      <img src={`${datas[0].image}`} />
+                    </SwiperSlide>
+                  </Swiper>
+                  )
                 }
               <br/>
               {load ?
@@ -341,6 +355,7 @@ export default function Details(id, status) {
                   </SwiperSlide>
                 </Swiper>
               :
+                (status ?
                 <Swiper
                   onSwiper={setThumbsSwiper}
                   spaceBetween={10}
@@ -356,7 +371,19 @@ export default function Details(id, status) {
                     </SwiperSlide>
                   )}
                 </Swiper>
-                }
+                :
+                <Swiper
+                  onSwiper={setThumbsSwiper}
+                  spaceBetween={10}
+                  slidesPerView={5}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  className="mySwiper"
+                >
+                </Swiper>
+                )
+              }
             </Col>
             {status?
             <Col sm="12" md="6" style={{ margin: "4vw 0", padding: "4vw" }}>
@@ -513,7 +540,7 @@ export default function Details(id, status) {
               <Link href={`${item.description}`}>
                 <a>
                   <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                    <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.list_photos[0].name} className={styles.featuredPict} />
+                    <Image width="30" height="30" layout="responsive" src={`${item.image}`} alt={item.text} className={styles.featuredPict} />
                   </Row>
                   <Row className={styles.textCenter}>
                     <h5 className={styles.othersText}>{item.title}</h5>

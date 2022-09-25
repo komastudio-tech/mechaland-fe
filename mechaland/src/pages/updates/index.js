@@ -11,10 +11,14 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import { SEO, Skeleton } from '../../components';
 import { useStoreApi } from '../../context/useAPI';
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
 import styles from '../../../styles/Home.module.css';
 
 export default function Instock() {
   const { axios } = useStoreApi();
+	const router = useRouter();
   const [load, setLoad] = useState(true);
 	const [datas, setDatas] = useState([
 		{
@@ -160,6 +164,8 @@ export default function Instock() {
               </Typography>
             </AccordionDetails>
           </Accordion>
+
+          <p className={`${styles.black} ${styles.backButton}`} style={{marginTop: "50px"}} onClick={() => router.back()}><FontAwesomeIcon icon={faArrowLeftLong} /> Back</p>
         </div>
       </main>
     </div>

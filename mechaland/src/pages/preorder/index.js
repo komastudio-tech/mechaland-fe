@@ -3,12 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Row, Col } from "reactstrap";
 import { SEO, Skeleton } from '../../components';
-import { useStoreApi } from '../../context/useAPI';
 import { useState, useEffect, useRef } from 'react';
 import styles from '../../../styles/Home.module.css';
+import AppPagination from "@/components/Pagination";
 
 export default function Preorder() {
-	const { axios } = useStoreApi();
 	const [load, setLoad] = useState(true);
 	const [datas, setDatas] = useState([
 		{
@@ -93,21 +92,6 @@ export default function Preorder() {
 		}
 	]);
 
-	const getData = async () => {
-	  try {
-			const response = await axios.get("api/v1/products/?category=PREORDER");
-			await setDatas(response.data);
-	  } catch (err) {
-			console.log("ERROR: ", err);
-	  }
-  
-	  setLoad(false);
-	};
-  
-	useEffect(() => {
-	  getData();
-	}, []);
-
 	const rupiah = (price) => {
     let result =  new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -116,7 +100,22 @@ export default function Preorder() {
 
 		console.log("Price:", result);
     return result;
-  }
+  };
+
+  const renderItem = datas.map((item, idx) => (
+    <Col key={`live-${idx}`} sm="12" md="4" style={{ margin: "3vw 0" }}>
+      <Link href={`/details/?id=${item.id}&status=false`}>
+        <a>
+          <Row className={styles.textCenter}>
+            <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
+          </Row>
+          <Row className={styles.textCenter}>
+            <h5 className={styles.featured}>{item.title}<br/><br/>{rupiah(item.price)}</h5>
+          </Row>
+        </a>
+      </Link>
+    </Col>
+  ));
 
   return (
     <div className={styles.container}>
@@ -173,22 +172,10 @@ export default function Preorder() {
             </Row>
             :
             <Row>
-              {datas.map((item, idx) =>
-                <Col key={`preorder-${idx}`} sm="12" md="4" style={{ margin: "3vw 0" }}>
-                  <Link href={`/details/?id=${item.id}&status=true`}>
-                    <a>
-											<Row className={styles.textCenter}>
-                        <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
-                      </Row>
-                      <Row className={styles.textCenter}>
-                        <h5 className={styles.featured}>{item.title}<br/><br/>{rupiah(item.price)}</h5>
-                      </Row>
-                    </a>
-                  </Link>
-                </Col>
-              )}
+              {renderItem}
             </Row>
           }
+          <AppPagination setDatas={(p) => setDatas(p)} status={false} category="PREORDER" setLoad={(p) => setLoad(p)}/>
         </div>
       </main>
     </div>
