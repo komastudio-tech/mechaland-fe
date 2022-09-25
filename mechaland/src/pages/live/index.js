@@ -178,7 +178,7 @@ export default function Live() {
               {renderItem}
             </Row>
           }
-          <AppPagination setDatas={(p) => setDatas(p)} status={false} category="LIVE" setLoad={(p) => setLoad(p)}/>
+          <AppPagination setDatas={(p) => setDatas(p)} status={true} category="LIVE" setLoad={(p) => setLoad(p)}/>
         </div>
       </main>
     </div>

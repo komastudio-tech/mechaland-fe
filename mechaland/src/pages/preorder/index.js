@@ -175,7 +175,7 @@ export default function Preorder() {
               {renderItem}
             </Row>
           }
-          <AppPagination setDatas={(p) => setDatas(p)} status={false} category="PREORDER" setLoad={(p) => setLoad(p)}/>
+          <AppPagination setDatas={(p) => setDatas(p)} status={true} category="PREORDER" setLoad={(p) => setLoad(p)}/>
         </div>
       </main>
     </div>

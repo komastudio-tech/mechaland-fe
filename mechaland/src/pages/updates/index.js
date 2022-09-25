@@ -1,8 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Link from 'next/link';
-import Image from 'next/image';
 import { Divider } from 'antd';
-import { Row, Col } from "reactstrap";
 import Accordion from '@mui/material/Accordion';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -20,31 +17,64 @@ export default function Instock() {
   const { axios } = useStoreApi();
 	const router = useRouter();
   const [load, setLoad] = useState(true);
-	const [datas, setDatas] = useState([
-		{
-		  text:"JWICK T1 Stem Switch (Tactile - PCB Mount)",
-		  buy_text:"https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount",
-		  image:"/assets/temp/switch1.jpeg",
-			price:"Rp.4.500"
-		},
-		{
-		  text:"JWICK Black Switch (Linear - PCB Mount) - 58.5g",
-		  buy_text:"https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g",
-		  image:"/assets/temp/switch2.jpeg",
-			price:"Rp.3.000"
-		},
-		{
-		  text:"Gateron Yellow (Linier - Plate Mount)",
-		  buy_text:"https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount",
-		  image:"/assets/temp/switch3.jpeg",
-			price:"Rp.4.000"
-		}
-	]);
+	const [update1, setUpdate1] = useState([
+    {
+        "id": "528a8f03-90a4-4189-8682-a098552b5c81",
+        "url": "https://mechaland-be.herokuapp.com/api/v1/updates/528a8f03-90a4-4189-8682-a098552b5c81/",
+        "title": "ePBT Soju",
+        "text": "The set was inspired by the Korean alcoholic drink, Soju. With a positive relationship with my love for soju and a negative tolerance level for alcohol, Expected to be ready to ship in two weeks (2022-09-17), Production completion progress reaches 70% (2022-09-08).",
+        "category": "PBT Fans"
+    },
+    {
+        "id": "69096a46-0dcb-4231-bad1-cf695a5dd945",
+        "url": "https://mechaland-be.herokuapp.com/api/v1/updates/69096a46-0dcb-4231-bad1-cf695a5dd945/",
+        "title": "ePBT Be The One",
+        "text": "This keyset is heavily inspired by the IDE theme One Dark Pro. It's a PBT set kind of discrete with a composition potential using the several kits available. Also note that there is NorDe, FR, and BE kit, Expected to be ready to ship in two weeks (2022-09-17), Production completion progress reaches 95% (2022-09-08)",
+        "category": "PBT Fans"
+    },
+    {
+        "id": "4acbd163-88f3-47e3-8d18-e69721356810",
+        "url": "https://mechaland-be.herokuapp.com/api/v1/updates/4acbd163-88f3-47e3-8d18-e69721356810/",
+        "title": "ePBT Samurai keycaps set",
+        "text": "ePBT RamenStop is a set inspired by small Japanese ramen shops. This set features plenty of cute iconic ramen shop novelties to fulfill your hunger for cute novelties, Sample confirmed, queued for production. (2022-06-06), Yellow color not accepted, making the third sample (2022-04-06).",
+        "category": "PBT Fans"
+    }
+  ]);
+	const [update2, setUpdate2] = useState([
+    {
+        "id": "528a8f03-90a4-4189-8682-a098552b5c81",
+        "url": "https://mechaland-be.herokuapp.com/api/v1/updates/528a8f03-90a4-4189-8682-a098552b5c81/",
+        "title": "ePBT Soju",
+        "text": "The set was inspired by the Korean alcoholic drink, Soju. With a positive relationship with my love for soju and a negative tolerance level for alcohol, Expected to be ready to ship in two weeks (2022-09-17), Production completion progress reaches 70% (2022-09-08).",
+        "category": "PBT Fans"
+    },
+    {
+        "id": "69096a46-0dcb-4231-bad1-cf695a5dd945",
+        "url": "https://mechaland-be.herokuapp.com/api/v1/updates/69096a46-0dcb-4231-bad1-cf695a5dd945/",
+        "title": "ePBT Be The One",
+        "text": "This keyset is heavily inspired by the IDE theme One Dark Pro. It's a PBT set kind of discrete with a composition potential using the several kits available. Also note that there is NorDe, FR, and BE kit, Expected to be ready to ship in two weeks (2022-09-17), Production completion progress reaches 95% (2022-09-08)",
+        "category": "PBT Fans"
+    },
+    {
+        "id": "4acbd163-88f3-47e3-8d18-e69721356810",
+        "url": "https://mechaland-be.herokuapp.com/api/v1/updates/4acbd163-88f3-47e3-8d18-e69721356810/",
+        "title": "ePBT Samurai keycaps set",
+        "text": "ePBT RamenStop is a set inspired by small Japanese ramen shops. This set features plenty of cute iconic ramen shop novelties to fulfill your hunger for cute novelties, Sample confirmed, queued for production. (2022-06-06), Yellow color not accepted, making the third sample (2022-04-06).",
+        "category": "PBT Fans"
+    }
+  ]);
 
 	const getData = async () => {
     try {
-      const response = await axios.get("api/v1/instock/");
-      await setDatas(response.data);
+      const response = await axios.get("api/v1/updates/?category=PBT Fans");
+      await setUpdate1(response.data);
+    } catch (err) {
+      console.log("ERROR: ", err);
+    }
+
+    try {
+      const response = await axios.get("api/v1/updates/?category=PBT Fans");
+      await setUpdate2(response.data);
     } catch (err) {
       console.log("ERROR: ", err);
     }
@@ -71,99 +101,41 @@ export default function Instock() {
             <Divider className={styles.updateDivider} />
         </div>
         <div className={styles.sectionInstock} style={{marginTop: "2px !important"}}>
-          <h4 className={`${styles.updateTitle}`}>PBT Fans</h4>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography>PBT Fans 1</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={`${styles.left}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                malesuada lacus ex, sit amet blandit leo lobortis eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>PBT Fans 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={`${styles.left}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                malesuada lacus ex, sit amet blandit leo lobortis eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>PBT Fans 3</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={`${styles.left}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                malesuada lacus ex, sit amet blandit leo lobortis eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion><br/>
-
-          <h4 className={`${styles.updateTitle}`}>Keyboard Kit</h4>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography>Keyboard Kit 1</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={`${styles.left}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                malesuada lacus ex, sit amet blandit leo lobortis eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Keyboard Kit 2</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={`${styles.left}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                malesuada lacus ex, sit amet blandit leo lobortis eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2a-content"
-              id="panel2a-header"
-            >
-              <Typography>Keyboard Kit 3</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={`${styles.left}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                malesuada lacus ex, sit amet blandit leo lobortis eget.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
+          <h4 className={`${styles.updateTitle}`}>{update1[0].category}</h4>
+          {update1.map((item, idx) => 
+            <Accordion key={`update1-${idx}`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>{item.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography className={`${styles.left}`}>
+                  {item.text}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          )}
+          <br/>
+          <h4 className={`${styles.updateTitle}`}>{update2[0].category}</h4>
+          {update2.map((item, idx) => 
+            <Accordion key={`update2-${idx}`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>{item.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography className={`${styles.left}`}>
+                  {item.text}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          )}
 
           <p className={`${styles.black} ${styles.backButton}`} style={{marginTop: "50px"}} onClick={() => router.back()}><FontAwesomeIcon icon={faArrowLeftLong} /> Back</p>
         </div>
