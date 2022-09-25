@@ -66,15 +66,28 @@ export default function Instock() {
 
 	const getData = async () => {
     try {
-      const response = await axios.get("api/v1/updates/?category=PBT Fans");
-      await setUpdate1(response.data);
+      const response = await axios.get("api/v1/updates/");
+      const map = [];
+      response.data.forEach((source) => {
+        map.push(source.category);
+      })
+      console.log(map);
     } catch (err) {
       console.log("ERROR: ", err);
     }
 
     try {
-      const response = await axios.get("api/v1/updates/?category=PBT Fans");
-      await setUpdate2(response.data);
+      const response1 = await axios.get("api/v1/updates/?category=PBT Fans");
+      console.log("Update1: ", response1.data);
+      await setUpdate1(response1.data);
+    } catch (err) {
+      console.log("ERROR: ", err);
+    }
+
+    try {
+      const response2 = await axios.get("api/v1/updates/?category=PBT Fans");
+      console.log("Update2: ", response2.data);
+      await setUpdate2(response2.data);
     } catch (err) {
       console.log("ERROR: ", err);
     }
@@ -101,41 +114,58 @@ export default function Instock() {
             <Divider className={styles.updateDivider} />
         </div>
         <div className={styles.sectionInstock} style={{marginTop: "2px !important"}}>
-          <h4 className={`${styles.updateTitle}`}>{update1[0].category}</h4>
-          {update1.map((item, idx) => 
-            <Accordion key={`update1-${idx}`}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>{item.title}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={`${styles.left}`}>
-                  {item.text}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          )}
+          {update1.length > 0 && update1.length > 0 ?
+          <></>
+          :
+          <p>Welp theres no new update, So you guys are already up-to-date!</p>
+          }
+          {update1.length > 0 ?
+          <>
+            <h4 className={`${styles.updateTitle}`}>{update1[0].category}</h4>
+            {update1.map((item, idx) => 
+              <Accordion key={`update1-${idx}`}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>{item.title}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className={`${styles.left}`}>
+                    {item.text}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            )}
+          </>
+          :
+          <></>
+          }
           <br/>
-          <h4 className={`${styles.updateTitle}`}>{update2[0].category}</h4>
-          {update2.map((item, idx) => 
-            <Accordion key={`update2-${idx}`}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>{item.title}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className={`${styles.left}`}>
-                  {item.text}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          )}
+          {update2.length > 0 ?
+          <>
+            <h4 className={`${styles.updateTitle}`}>{update2[0].category}</h4>
+            {update2.map((item, idx) => 
+              <Accordion key={`update2-${idx}`}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>{item.title}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className={`${styles.left}`}>
+                    {item.text}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            )}
+          </>
+          :
+          <></>
+          }
 
           <p className={`${styles.black} ${styles.backButton}`} style={{marginTop: "50px"}} onClick={() => router.back()}><FontAwesomeIcon icon={faArrowLeftLong} /> Back</p>
         </div>

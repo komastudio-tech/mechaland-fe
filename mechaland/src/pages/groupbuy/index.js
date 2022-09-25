@@ -98,7 +98,6 @@ export default function Groupbuy() {
       currency: "IDR"
     }).format(price);
 
-		console.log("Price:", result);
     return result;
   };
 
@@ -107,7 +106,7 @@ export default function Groupbuy() {
       <Link href={`/details/?id=${item.id}&status=true`}>
         <a>
           <Row className={styles.textCenter}>
-            <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
+            <Image width="30" height="30" layout="responsive" src={item.list_photos.length > 0 ? item.list_photos[0].image : `/assets/temp/no_data.jpg`} alt={item.text} className={styles.featuredPict} />
           </Row>
           <Row className={styles.textCenter}>
             <h5 className={styles.featured}>{item.title}<br/><br/>{rupiah(item.price)}</h5>
@@ -172,10 +171,14 @@ export default function Groupbuy() {
             </Row>
             :
             <Row>
-              {renderItem}
+              {datas.length > 0 ?
+              renderItem
+              :
+              <p>Wow there&apos;s no data yet!</p>
+              }
             </Row>
           }
-          <AppPagination setDatas={(p) => setDatas(p)} status={true} category="GROUPBUY" setLoad={(p) => setLoad(p)}/>
+          <AppPagination setDatas={(p) => setDatas(p)} status={true} category="Groupbuy" setLoad={(p) => setLoad(p)}/>
         </div>
       </main>
     </div>

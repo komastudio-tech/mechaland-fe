@@ -260,7 +260,6 @@ export default function Details() {
 
   const variant = () => {
     var val = $('#variantDropdown').find(":selected").val();
-    console.log("Variant: ", val);
     rupiah(val);
   }
 
@@ -411,11 +410,15 @@ export default function Details() {
                         <option key={`variantLoad`} value="null" selected><Skeleton height="40px" width="100px" /></option>
                       </select>
                     :
+                     (datas[0].has_variant == true ?
                       <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
                         {datas[0].list_variant.map((item, idx) =>
                           <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.name}</option>
                         )}
                       </select>
+                      :
+                      <></>
+                     )
                     }
                   </Col>
                 </Row>
@@ -436,8 +439,9 @@ export default function Details() {
                   </Col>
                 </Row>
                 <Row style={{ margin: "2vw 0 1vw 0"}}>
-                  <Link href={`${datas[0].description}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">TOKOPEDIA</a></Link>
+                  <Link href={`${datas[0].link}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">TOKOPEDIA</a></Link>
                 </Row>
+                {datas[0].has_specs == true ?
                 <Row style={{ margin: "1vw 0", textAlign: "left"}}>
                   <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0"}}>Specs:</p>
                   {load ?
@@ -454,6 +458,9 @@ export default function Details() {
                   </ul>
                   }
                 </Row>
+                :
+                <></>
+                }
             </Col>
             :
             <Col sm="12" md="6" style={{ margin: "4vw 0", padding: "4vw" }}>
@@ -537,7 +544,7 @@ export default function Details() {
           <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
           {others.map((item, idx) =>
             <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-              <Link href={`${item.description}`}>
+              <Link href={`/details/?id=${item.id}&status=${status}`}>
                 <a>
                   <Row className={`${styles.textCenter} ${styles.othersPict}`}>
                     <Image width="30" height="30" layout="responsive" src={`${item.image}`} alt={item.text} className={styles.featuredPict} />

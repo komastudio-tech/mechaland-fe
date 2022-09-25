@@ -98,7 +98,6 @@ export default function Interest() {
       currency: "IDR"
     }).format(price);
 
-		console.log("Price:", result);
     return result;
   }
 
@@ -169,10 +168,14 @@ export default function Interest() {
             </Row>
             :
             <Row>
-              {renderItem}
+            {datas.length > 0 ?
+            renderItem
+            :
+            <p>Wow there&apos;s no data yet!</p>
+            }
             </Row>
           }
-          <AppPagination setDatas={(p) => setDatas(p)} status={false} category="INTEREST" setLoad={(p) => setLoad(p)}/>
+          <AppPagination setDatas={(p) => setDatas(p)} status={false} category="" setLoad={(p) => setLoad(p)}/>
         </div>
       </main>
     </div>

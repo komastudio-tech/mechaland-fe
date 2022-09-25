@@ -36,7 +36,6 @@ export default function Home() {
   const getData = async () => {
     try {
       const response = await axios.get("api/v1/hero_image/");
-      console.log("Hero Image: ", response.data);
       await setHero(response.data);
     } catch (err) {
       console.log("ERROR: ", err);
@@ -45,7 +44,6 @@ export default function Home() {
     try {
       const response = await axios.get("api/v1/featured_collection/");
       const data = (response.data).slice(0,3);
-      console.log("Featured Sliced: ", data);
       await setFeatured(data);
     } catch (err) {
       console.log("ERROR: ", err);
@@ -88,6 +86,7 @@ export default function Home() {
               </div>
             </div>
             :
+            (hero.length > 0 ?
             <>
               {hero.map((item, idx) =>
                 <div key={`hero-${idx}`} className={idx == 0 ? `carousel-item active` : `carousel-item`}>
@@ -99,6 +98,15 @@ export default function Home() {
                 </div>
               )}
             </>
+            :
+            <div key={`heroTemp}`} className={`carousel-item active`}>
+              <Image src={`/assets/temp/banner1.jpeg`} alt={`bannerTemp`} layout="fill" className={styles.swipe}/>
+              <div className={styles.bannerContent}>
+                <h5 className={styles.bannerTitle}>Check out our Tokopedia!</h5>
+                <Link href={`https://www.tokopedia.com/mechaland`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW !</a></Link>
+              </div>
+            </div>
+            )
           }
           </div>
         </div>
@@ -113,6 +121,7 @@ export default function Home() {
             </p>
           </div>
         </div>
+        {featured.length > 0 ?
         <div className={styles.sectionFeatured}>
           <h2 className={styles.title}>Featured Collection</h2>
           { load ?
@@ -161,6 +170,9 @@ export default function Home() {
             </Row>
           }
         </div>
+        :
+        <div></div>
+        }
       </main>
 
       <div className={styles.sectionDiscord}>

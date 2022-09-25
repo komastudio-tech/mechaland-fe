@@ -5,7 +5,6 @@ import { useStoreApi } from '../../context/useAPI';
 const pageSize = 9;
 
 export default function AppPagination({setDatas, status, category, setLoad}) {
-  console.log(setDatas, status, category, setLoad);
 	const { axios } = useStoreApi();
   const [paging, setPaging] = useState({
     count: 0,
@@ -22,7 +21,6 @@ export default function AppPagination({setDatas, status, category, setLoad}) {
         response = await axios.get(`api/v1/interestcheck/`);
       }
       const data = response.data.slice(from, to);
-			console.log("Data: ", { raw: response.data, sliced: data, category: category });
 			await setPaging({...paging, count: response.data.length});
 			await setDatas(data);
 	  } catch (err) {
