@@ -8,11 +8,7 @@ import styles from "../../../styles/Home.module.css";
 
 export default function Navigation({ children }) {
   const router = useRouter();
-  const [contacts, setContacts] = useState([{
-    discord: "dGU2FyaUxd",
-    tokopedia: "mechaland",
-    instagram: "mechaland.id"
-  }]);
+  const [contacts, setContacts] = useState([{ discord: "dGU2FyaUxd", tokopedia: "mechaland", instagram: "mechaland.id" }]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [clientWindowHeight, setClientWindowHeight] = useState("");
   const [backgroundTransparacy, setBackgroundTransparacy] = useState(0);

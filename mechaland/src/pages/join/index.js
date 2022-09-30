@@ -1,11 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Divider } from 'antd';
 import { Row, Col } from "reactstrap";
 import { useRouter } from 'next/router';
-import { SEO, Skeleton } from '../../components';
-import { useState, useEffect, useRef } from 'react';
 import styles from '../../../styles/Home.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
@@ -15,10 +14,43 @@ export default function Join() {
 
   return (
     <div className={styles.container}>
-      <SEO
-        title="How To Join | Mechaland"
-        description="Mechaland"
-      />
+      <Head>
+        <title>How To Join | Mechaland</title>
+        <meta name="title" content="Details | Mechaland" />
+        <meta
+          name="description"
+          content={`Mechaland`}
+        />
+        <meta name="author" content={`Mechaland 2022`} />
+        <meta name="copyright" content={`Mechaland`} />
+        <a rel="Syklik" href="/favicon.ico" />
+        <a rel="canonical" href={`Mechaland`} />
+        <meta name="robots" content="index,follow" />
+        <meta property="og:title" content="Details | Mechaland" />
+        <meta
+          property="og:site_name"
+          content={`Mechaland`}
+        />
+        <meta property="og:url" content={`https://mechaland.id/`} />
+        <meta
+          property="og:description"
+          content={`Mechaland`}
+        />
+        <meta property="og:type" content={`website`} />
+        <meta name="twitter:card" content="summary" />
+        <meta property="twitter:url" content={`https://mechaland.id/`} />
+        <meta name="twitter:title" content="Details | Mechaland" />
+        <meta
+          name="twitter:description"
+          content={`Mechaland`}
+        />
+
+        <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+        <a rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+      </Head>
 
       <main className={styles.main}>
         <div className={styles.description} style={{marginBottom: "10px", paddingBottom: "5px"}}>
