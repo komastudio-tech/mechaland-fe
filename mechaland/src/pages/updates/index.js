@@ -19,32 +19,7 @@ export default function Instock() {
 	const router = useRouter();
   const [load, setLoad] = useState(true);
   const [categories, setCategories] = useState([]);
-	const [datas, setDatas] = useState([
-    {
-        "id": "528a8f03-90a4-4189-8682-a098552b5c81",
-        "title": "ePBT Soju",
-        "text": "The set was inspired by the Korean alcoholic drink, Soju. With a positive relationship with my love for soju and a negative tolerance level for alcohol, Expected to be ready to ship in two weeks (2022-09-17), Production completion progress reaches 70% (2022-09-08).",
-        "category": "PBTFans"
-    },
-    {
-        "id": "69096a46-0dcb-4231-bad1-cf695a5dd945",
-        "title": "ePBT Be The One",
-        "text": "This keyset is heavily inspired by the IDE theme One Dark Pro. It&apos;s a PBT set kind of discrete with a composition potential using the several kits available. Also note that there is NorDe, FR, and BE kit, Expected to be ready to ship in two weeks (2022-09-17), Production completion progress reaches 95% (2022-09-08)",
-        "category": "PBTFans"
-    },
-    {
-        "id": "4acbd163-88f3-47e3-8d18-e69721356810",
-        "title": "ePBT Samurai keycaps set",
-        "text": "ePBT RamenStop is a set inspired by small Japanese ramen shops. This set features plenty of cute iconic ramen shop novelties to fulfill your hunger for cute novelties, Sample confirmed, queued for production. (2022-06-06), Yellow color not accepted, making the third sample (2022-04-06).",
-        "category": "PBTFans"
-    },
-    {
-        "id": "4acbd163-88f3-47e3-8d18-e69721356811",
-        "title": "R60 retro keyboard",
-        "text": "The prototype Cherry G80-3077SAU is one of my favorite mechanical keyboards, and I love the great design. We recreated this 60% layout keyboard kit with reference to the shape of the G80-3077SAU.",
-        "category": "Keyboard Kit"
-    }
-  ]);
+	const [datas, setDatas] = useState([]);
 
 	const getData = async () => {
     const map = [];
@@ -138,8 +113,49 @@ export default function Instock() {
             <Divider className={styles.updateDivider} />
         </div>
         <div className={styles.sectionInstock} style={{marginTop: "2px !important"}}>
-          {datas.length <= 0 ?
-          <p>Welp theres no new update, So you guys are already up-to-date!</p>
+          {load ?
+          <>
+            <Skeleton height="50px" width="100px" />
+            <Accordion key={`updates-load1`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Skeleton height="50px" width="200px" />
+              </AccordionSummary>
+              <AccordionDetails>
+                <Skeleton height="50px" width="250px" />
+              </AccordionDetails>
+            </Accordion>
+            <Accordion key={`updates-load2`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Skeleton height="50px" width="170px" />
+              </AccordionSummary>
+              <AccordionDetails>
+                <Skeleton height="50px" width="250px" />
+              </AccordionDetails>
+            </Accordion>
+            <Accordion key={`updates-load3`}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Skeleton height="50px" width="230px" />
+              </AccordionSummary>
+              <AccordionDetails>
+                <Skeleton height="50px" width="250px" />
+              </AccordionDetails>
+            </Accordion>
+          </>
+          :
+          datas.length <= 0 ?
+          <p>Congrats you are already up-to-date!</p>
           :
           <>
             <h4 className={`${styles.updateTitle}`}>{categories[0]}</h4>

@@ -12,27 +12,11 @@ export default function Home() {
   const { axios } = useStoreApi();
   const [load, setLoad] = useState(true);
   const [hero, setHero] = useState([{
-    text:"Blue Ashes Keycap Set",
+    text:"Mechaland",
     buy_text:"https://www.tokopedia.com/mechaland",
     image:"/assets/temp/banner1.jpeg"
   }]);
-  const [featured, setFeatured] = useState([
-    {
-      text:"JWICK T1 Stem Switch (Tactile - PCB Mount)",
-      buy_text:"https://www.tokopedia.com/mechaland/jwick-t1-stem-switch-tactile-pcb-mount",
-      image:"/assets/temp/switch1.jpeg"
-    },
-    {
-      text:"JWICK Black Switch (Linear - PCB Mount) - 58.5g",
-      buy_text:"https://www.tokopedia.com/mechaland/jwick-black-switch-linear-pcb-mount-58-5g",
-      image:"/assets/temp/switch2.jpeg"
-    },
-    {
-      text:"Gateron Yellow (Linier - Plate Mount)",
-      buy_text:"https://www.tokopedia.com/mechaland/gateron-yellow-linier-plate-mount",
-      image:"/assets/temp/switch3.jpeg"
-    }
-  ]);
+  const [featured, setFeatured] = useState([]);
 
   const getData = async () => {
     try {
@@ -103,11 +87,14 @@ export default function Home() {
           { load ?
             <></>
             :
+            (hero.length > 0) ?
             <>
               {hero.map((item, idx) =>
                 <button key={`slide-${idx}`} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={idx} className={idx == 0 ? `active` : ``} aria-current="true" aria-label={`${item.text}`}></button>
               )}
             </>
+            :
+            <></>
           }
           </div>
           <div className="carousel-inner">
@@ -186,6 +173,7 @@ export default function Home() {
               </Col>
             </Row>
             :
+            featured.length > 0 ?
             <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
               {featured.map((item, idx) =>
                 <Col key={`featured-${idx}`} sm="12" md="4" style={{ margin: "3vw 0" }}>
@@ -201,6 +189,12 @@ export default function Home() {
                   </Link>
                 </Col>
               )}
+            </Row>
+            :
+            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+              <Col key={`featured-${idx}`} sm="12" md="12" style={{ margin: "3vw 0" }}>
+                <p>Sorry, we are still checking our products</p>
+              </Col>
             </Row>
           }
         </div>

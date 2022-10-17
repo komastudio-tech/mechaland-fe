@@ -29,168 +29,8 @@ export default function Details() {
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState(null);
   const [price, setPrice] = useState(null);
-  const [others, setOthers] = useState([
-    {
-      "id": "777066e4-6107-49fd-831f-dbde5238c769",
-      "url": "https://mechaland-be.herokuapp.com/api/v1/products/777066e4-6107-49fd-831f-dbde5238c769/",
-      "title": "Domikey Single Chip (ABS - Cherry Profile)",
-      "description": "https://www.tokopedia.com/mechaland/domikey-single-chip-abs-cherry-profile-uk?extParam=whid%3D8888533",
-      "price": 184000,
-      "stock": 4,
-      "category": "INSTOCK",
-      "list_photos": [
-        {
-          "id": "4709ef57-7bbc-4ddf-a579-54e69025b55c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productimage/4709ef57-7bbc-4ddf-a579-54e69025b55c/",
-          "name": "Domikey Single Chip (ABS - Cherry Profile) - UK",
-          "image": "/assets/temp/keycap.jpg",
-          "ranking": 1
-        },
-        {
-          "id": "5b4111b9-a4a4-4f57-865c-641ab206663d",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productimage/5b4111b9-a4a4-4f57-865c-641ab206663d/",
-          "name": "Domikey Single Chip (ABS - Cherry Profile) - Spacebar",
-          "image": "/assets/temp/spacebar.jpg",
-          "ranking": 2
-        }
-      ],
-      "list_specs": [
-        {
-          "id": "98038727-3a45-4233-a9df-95d19b97781c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/98038727-3a45-4233-a9df-95d19b97781c/",
-          "specs": "Domikey"
-        },
-        {
-          "id": "7ac72339-d48a-470d-9cff-fa57f0a19e03",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/7ac72339-d48a-470d-9cff-fa57f0a19e03/",
-          "specs": "Cherry profile (sculpted 1-1-2-3-4-4)"
-        },
-        {
-          "id": "6b03c5f5-02e7-4dc7-ab76-74a977eef808",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/6b03c5f5-02e7-4dc7-ab76-74a977eef808/",
-          "specs": "Compatible with Cherry MX and clones"
-        },
-        {
-          "id": "f4296463-4e66-4634-80d4-7a71976fe60c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/f4296463-4e66-4634-80d4-7a71976fe60c/",
-          "specs": "ABS plastic"
-        },
-        {
-          "id": "b907c4ed-b155-432b-b8f6-571b1fdecb5a",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/b907c4ed-b155-432b-b8f6-571b1fdecb5a/",
-          "specs": "Doubleshot legends\\Tripleshot Jan legends"
-        },
-        {
-          "id": "7a46440a-f853-4716-ba07-9219ce1e027b",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/7a46440a-f853-4716-ba07-9219ce1e027b/",
-          "specs": "Stripe bottom"
-        },
-        {
-          "id": "9d249e21-da1b-4d0d-b3b1-35fa6744eb4d",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/9d249e21-da1b-4d0d-b3b1-35fa6744eb4d/",
-          "specs": "Comes with plastic tray for each set (except for UK, numpad and alt color must buy these 3 sets for getting tray, if not will be shipped with zip lock)"
-        }
-      ],
-      "list_variant": [
-        {
-          "id": "dd898c9f-5401-4bf7-92e5-1ca15fbbec1c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productvariant/dd898c9f-5401-4bf7-92e5-1ca15fbbec1c/",
-          "variant": 60,
-          "price": 6000000,
-          "stock": 40
-        },
-        {
-          "id": "9868d901-1f2e-4ce2-9eb6-0e1f672138ad",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productvariant/9868d901-1f2e-4ce2-9eb6-0e1f672138ad/",
-          "variant": 1,
-          "price": 213000,
-          "stock": 2
-        }
-      ]
-    }
-  ]);
-	const [datas, setDatas] = useState([
-		{
-      "id": "777066e4-6107-49fd-831f-dbde5238c769",
-      "url": "https://mechaland-be.herokuapp.com/api/v1/products/777066e4-6107-49fd-831f-dbde5238c769/",
-      "title": "Domikey Single Chip (ABS - Cherry Profile)",
-      "description": "https://www.tokopedia.com/mechaland/domikey-single-chip-abs-cherry-profile-uk?extParam=whid%3D8888533",
-      "price": 184000,
-      "stock": 4,
-      "category": "INSTOCK",
-      "list_photos": [
-        {
-          "id": "4709ef57-7bbc-4ddf-a579-54e69025b55c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productimage/4709ef57-7bbc-4ddf-a579-54e69025b55c/",
-          "name": "Domikey Single Chip (ABS - Cherry Profile) - UK",
-          "image": "/assets/temp/keycap.jpg",
-          "ranking": 1
-        },
-        {
-          "id": "5b4111b9-a4a4-4f57-865c-641ab206663d",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productimage/5b4111b9-a4a4-4f57-865c-641ab206663d/",
-          "name": "Domikey Single Chip (ABS - Cherry Profile) - Spacebar",
-          "image": "/assets/temp/spacebar.jpg",
-          "ranking": 2
-        }
-      ],
-      "list_specs": [
-        {
-          "id": "98038727-3a45-4233-a9df-95d19b97781c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/98038727-3a45-4233-a9df-95d19b97781c/",
-          "specs": "Domikey"
-        },
-        {
-          "id": "7ac72339-d48a-470d-9cff-fa57f0a19e03",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/7ac72339-d48a-470d-9cff-fa57f0a19e03/",
-          "specs": "Cherry profile (sculpted 1-1-2-3-4-4)"
-        },
-        {
-          "id": "6b03c5f5-02e7-4dc7-ab76-74a977eef808",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/6b03c5f5-02e7-4dc7-ab76-74a977eef808/",
-          "specs": "Compatible with Cherry MX and clones"
-        },
-        {
-          "id": "f4296463-4e66-4634-80d4-7a71976fe60c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/f4296463-4e66-4634-80d4-7a71976fe60c/",
-          "specs": "ABS plastic"
-        },
-        {
-          "id": "b907c4ed-b155-432b-b8f6-571b1fdecb5a",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/b907c4ed-b155-432b-b8f6-571b1fdecb5a/",
-          "specs": "Doubleshot legends\\Tripleshot Jan legends"
-        },
-        {
-          "id": "7a46440a-f853-4716-ba07-9219ce1e027b",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/7a46440a-f853-4716-ba07-9219ce1e027b/",
-          "specs": "Stripe bottom"
-        },
-        {
-          "id": "9d249e21-da1b-4d0d-b3b1-35fa6744eb4d",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productspecs/9d249e21-da1b-4d0d-b3b1-35fa6744eb4d/",
-          "specs": "Comes with plastic tray for each set (except for UK, numpad and alt color must buy these 3 sets for getting tray, if not will be shipped with zip lock)"
-        }
-      ],
-      "list_variant": [
-        {
-          "id": "dd898c9f-5401-4bf7-92e5-1ca15fbbec1c",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productvariant/dd898c9f-5401-4bf7-92e5-1ca15fbbec1c/",
-          "name": "Test Sandi",
-          "variant": 60,
-          "price": 6000000,
-          "stock": 40
-        },
-        {
-          "id": "9868d901-1f2e-4ce2-9eb6-0e1f672138ad",
-          "url": "https://mechaland-be.herokuapp.com/api/v1/productvariant/9868d901-1f2e-4ce2-9eb6-0e1f672138ad/",
-          "name": "Spacebar",
-          "variant": 1,
-          "price": 213000,
-          "stock": 2
-        }
-      ]
-    }
-	]);
+  const [others, setOthers] = useState([]);
+	const [datas, setDatas] = useState([]);
 
 	const getData = async () => {
     try {
@@ -219,7 +59,7 @@ export default function Details() {
       console.log("ERROR: ", err);
     }
 
-    if (price == null) {
+    if (price == null && (datas.length > 0)) {
       await rupiah(datas[0].list_variant[0].id)
     }
 
@@ -326,42 +166,58 @@ export default function Details() {
                     </SwiperSlide>
                   </Swiper>
                 :
-                  (status ?
-                  <Swiper
-                    style={{
-                      "--swiper-navigation-color": "#fff",
-                      "--swiper-pagination-color": "#fff",
-                    }}
-                    loop={true}
-                    spaceBetween={10}
-                    navigation={true}
-                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                    modules={[FreeMode, Navigation, Thumbs]}
-                    className="mySwiper2"
-                  >
-                    {datas[0].list_photos.map((item, idx) =>
-                      <SwiperSlide key={`pict-${idx}`}>
-                        <img src={`${item.image}`} />
+                  (datas.length > 0) ?
+                  status ?
+                    <Swiper
+                      style={{
+                        "--swiper-navigation-color": "#fff",
+                        "--swiper-pagination-color": "#fff",
+                      }}
+                      loop={true}
+                      spaceBetween={10}
+                      navigation={true}
+                      thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiper2"
+                    >
+                      {datas[0].list_photos.map((item, idx) =>
+                        <SwiperSlide key={`pict-${idx}`}>
+                          <img src={`${item.image}`} />
+                        </SwiperSlide>
+                      )}
+                    </Swiper>
+                    :
+                    <Swiper
+                      style={{
+                        "--swiper-navigation-color": "#fff",
+                        "--swiper-pagination-color": "#fff",
+                      }}
+                      loop={true}
+                      spaceBetween={10}
+                      thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiper2"
+                    >
+                      <SwiperSlide key={`pictInterest`}>
+                        <img src={`${datas[0].image}`} />
                       </SwiperSlide>
-                    )}
-                  </Swiper>
+                    </Swiper>
                   :
-                  <Swiper
-                    style={{
-                      "--swiper-navigation-color": "#fff",
-                      "--swiper-pagination-color": "#fff",
-                    }}
-                    loop={true}
-                    spaceBetween={10}
-                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                    modules={[FreeMode, Navigation, Thumbs]}
-                    className="mySwiper2"
-                  >
-                    <SwiperSlide key={`pictInterest`}>
-                      <img src={`${datas[0].image}`} />
-                    </SwiperSlide>
-                  </Swiper>
-                  )
+                    <Swiper
+                      style={{
+                        "--swiper-navigation-color": "#fff",
+                        "--swiper-pagination-color": "#fff",
+                      }}
+                      loop={true}
+                      spaceBetween={10}
+                      thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      className="mySwiper2"
+                    >
+                      <SwiperSlide key={`pictInterest`}>
+                        <img src={`/assets/temp/no_data.jpg`} />
+                      </SwiperSlide>
+                    </Swiper>
                 }
               <br/>
               {load ?
@@ -388,7 +244,7 @@ export default function Details() {
                   </SwiperSlide>
                 </Swiper>
               :
-                (status ?
+                status && (datas.length > 0) ?
                 <Swiper
                   onSwiper={setThumbsSwiper}
                   spaceBetween={10}
@@ -415,10 +271,10 @@ export default function Details() {
                   className="mySwiper"
                 >
                 </Swiper>
-                )
               }
             </Col>
-            {status?
+            {(datas.length > 0) ?
+            status ?
             <Col sm="12" md="6" style={{ margin: "4vw 0", padding: "4vw" }}>
                 <Row className={`${styles.textCenter} ${styles.black}`}>
                   {load ? 
@@ -444,7 +300,7 @@ export default function Details() {
                         <option key={`variantLoad`} value="null" selected><Skeleton height="40px" width="100px" /></option>
                       </select>
                     :
-                     (datas[0].has_variant == true ?
+                      datas[0].has_variant == true ?
                       <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
                         {datas[0].list_variant.map((item, idx) =>
                           <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.name}</option>
@@ -452,7 +308,6 @@ export default function Details() {
                       </select>
                       :
                       <></>
-                     )
                     }
                   </Col>
                 </Row>
@@ -518,6 +373,10 @@ export default function Details() {
                   <p className={styles.detailsLabel} style={{marginBottom: "1px"}}>*For further info please visit our discord</p>
                 </Row>
             </Col>
+            :
+            <Col sm="12" md="12" style={{ margin: "4vw 0", padding: "4vw" }}>
+              <p>Sorry, this product is still in check</p>
+            </Col>
             }
           </Row>
           <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -575,22 +434,29 @@ export default function Details() {
             </Col>
           </Row>
           :
-          <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-          {others.map((item, idx) =>
-            <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-              <Link href={`/details/?id=${item.id}&status=${status}`}>
-                <a>
-                  <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                    <Image width="30" height="30" layout="responsive" src={`${item.image}`} alt={item.text} className={styles.featuredPict} />
-                  </Row>
-                  <Row className={styles.textCenter}>
-                    <h5 className={styles.othersText}>{item.title}</h5>
-                  </Row>
-                </a>
-              </Link>
-            </Col>
-          )}
-          </Row>
+          others.length > 0 ?
+            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+            {others.map((item, idx) =>
+              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0" }}>
+                <Link href={`/details/?id=${item.id}&status=${status}`}>
+                  <a>
+                    <Row className={`${styles.textCenter} ${styles.othersPict}`}>
+                      <Image width="30" height="30" layout="responsive" src={`${item.image}`} alt={item.text} className={styles.featuredPict} />
+                    </Row>
+                    <Row className={styles.textCenter}>
+                      <h5 className={styles.othersText}>{item.title}</h5>
+                    </Row>
+                  </a>
+                </Link>
+              </Col>
+            )}
+            </Row>
+            :
+            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+              <Col key={`others-empty`} sm="12" md="12" style={{ margin: "3vw 0" }}>
+                <p>Sorry, we are still checking our products</p>
+              </Col>
+            </Row>
           }
         </div>
       </main>
