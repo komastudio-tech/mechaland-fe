@@ -32,8 +32,6 @@ export default function Instock() {
       });
       await setCategories(map);
       await setDatas(response.data);
-      console.log("Categories: ", map);
-      console.log("Datas: ", datas);
     } catch (err) {
       console.log("ERROR: ", err);
     }
