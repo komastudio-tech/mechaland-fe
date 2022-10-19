@@ -25,13 +25,11 @@ export default function Instock() {
     const map = [];
     try {
       const response = await axios.get("api/v1/updates/");
-      datas.forEach((source) => {
+      response.data.forEach((source) => {
         if(map.indexOf(source.category) < 0) {
           map.push(source.category);
         }
       });
-      console.log("Categories: ", map);
-      console.log("Datas: ", datas);
       await setCategories(map);
       await setDatas(response.data);
     } catch (err) {
