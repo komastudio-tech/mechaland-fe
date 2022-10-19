@@ -14,7 +14,7 @@ export default function Home() {
   const [hero, setHero] = useState([{
     text:"Mechaland",
     buy_text:"https://www.tokopedia.com/mechaland",
-    image:"/assets/temp/banner1.jpeg"
+    image:"/assets/temp/banner1.jpg"
   }]);
   const [featured, setFeatured] = useState([]);
 
@@ -121,7 +121,7 @@ export default function Home() {
             </>
             :
             <div key={`heroTemp}`} className={`carousel-item active`}>
-              <Image src={`/assets/temp/banner1.jpeg`} alt={`bannerTemp`} layout="fill" className={styles.swipe}/>
+              <Image src={`/assets/temp/banner1.jpg`} alt={`bannerTemp`} layout="fill" className={styles.swipe}/>
               <div className={styles.bannerContent}>
                 <h5 className={styles.bannerTitle}>Check out our Tokopedia!</h5>
                 <Link href={`https://www.tokopedia.com/mechaland`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.bannerButton}`} role="button" aria-pressed="true">BUY NOW !</a></Link>
@@ -136,7 +136,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <div className={styles.desc}>
-            <h3 className={styles.title}>Get everything you need from Mechaland.com</h3>
+            <h3 className={styles.title}>Get everything you need from mechaland.id</h3>
             <p className={styles.subTitle}>
               We come from Indonesia. We provide and create innovative, unique and affordable customized mechanical keyboard things as well as peripheral products.
             </p>
