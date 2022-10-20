@@ -27,6 +27,7 @@ export default function Details() {
   const { axios } = useStoreApi();
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [stock, setStock] = useState(1);
   const [category, setCategory] = useState(null);
   const [price, setPrice] = useState(null);
   const [others, setOthers] = useState([]);
@@ -42,6 +43,13 @@ export default function Details() {
       }
       await setDatas(response.data);
       await setCategory(response.data[0].category);
+      if (response.data[0].has_variant) {
+        await updatePrice(response.data[0].list_variant[0].price, true);
+        await setStock(response.data[0].list_variant[0].stock);
+      } else {
+        await updatePrice(response.data[0].price, true);
+        await setStock(response.data[0].stock);
+      }
     } catch (err) {
       console.log("ERROR: ", err);
     }
@@ -81,13 +89,17 @@ export default function Details() {
     }
   }
 
-  const rupiah = (id) => {
+  const updatePrice = (priceId, status) => {
     let res = 0;
-    let list = datas[0].list_variant;
-    for(var i = 0; i < (datas[0].list_variant).length; i++) {
-      if(list[i].id === id) {
-          res = datas[0].list_variant[i].price;
-          break;
+    if (status) {
+      res = priceId;
+    } else {
+      let list = datas[0].list_variant;
+      for(var i = 0; i < (datas[0].list_variant).length; i++) {
+        if(list[i].id === priceId) {
+            res = datas[0].list_variant[i].price;
+            break;
+        }
       }
     }
 
@@ -99,9 +111,23 @@ export default function Details() {
     setPrice(result);
   }
 
+  const updateStock = (id) => {
+    let result = 0;
+    let list = datas[0].list_variant;
+    for(var i = 0; i < (datas[0].list_variant).length; i++) {
+      if(list[i].id === id) {
+          result = datas[0].list_variant[i].stock;
+          break;
+      }
+    }
+
+    setStock(result);
+  }
+
   const variant = () => {
     var val = $('#variantDropdown').find(":selected").val();
-    rupiah(val);
+    updatePrice(val, false);
+    updateStock(val);
   }
 
   return (
@@ -303,7 +329,7 @@ export default function Details() {
                       datas[0].has_variant == true ?
                       <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
                         {datas[0].list_variant.map((item, idx) =>
-                          <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.name}</option>
+                          <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.variant}</option>
                         )}
                       </select>
                       :
@@ -321,7 +347,7 @@ export default function Details() {
                     </span>
                     <input type="text" className={`form-control input-number ${styles.detailsQuantity}`} value={quantity} min="1" disabled/>
                     <span className={`input-group-append`}>
-                      <button type="button" className={`btn btn-outline-secondary btn-number ${styles.detailsQButton}`} disabled={quantity >= datas[0].list_variant.stock ? true : false} data-type="plus" data-field="quant[1]" style={{borderRadius: "0 4px 4px 0"}} onClick={() => updateQuantity("add")}>
+                      <button type="button" className={`btn btn-outline-secondary btn-number ${styles.detailsQButton}`} disabled={quantity >= stock ? true : false} data-type="plus" data-field="quant[1]" style={{borderRadius: "0 4px 4px 0"}} onClick={() => updateQuantity("add")}>
                         <FontAwesomeIcon icon={faPlus} />
                       </button>
                     </span>
@@ -332,7 +358,7 @@ export default function Details() {
                 </Row>
                 {datas[0].has_specs == true ?
                 <Row style={{ margin: "1vw 0", textAlign: "left"}}>
-                  <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0"}}>Specs:</p>
+                  <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0", paddingLeft: "0"}}>Specs:</p>
                   {load ?
                   <ul>
                     <li key={`specLoad1`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="150px" /></li>
@@ -340,7 +366,7 @@ export default function Details() {
                     <li key={`specLoad3`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="180px" /></li>
                   </ul>
                   :
-                  <ul style={{listStyle: "inside"}}>
+                  <ul style={{listStyle: "outside"}}>
                     {datas[0].list_specs.map((item, idx) =>
                       <li key={`spec-${idx}`} className={styles.detailsSpecs}>{item.specs}</li>
                     )}
@@ -379,9 +405,13 @@ export default function Details() {
             </Col>
             }
           </Row>
-          <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-              <h3 className={`${styles.black} ${styles.pt20}`}>You May Also Like</h3>
-          </Row>
+          {load || others.length > 0 ?
+            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <h3 className={`${styles.black} ${styles.pt20}`}>You May Also Like</h3>
+            </Row>
+            :
+            <></>
+          }
           {load ? 
           <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Col key={`othersLoad1`} sm="12" md="3" style={{ margin: "3vw 0" }}>
@@ -452,11 +482,7 @@ export default function Details() {
             )}
             </Row>
             :
-            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-              <Col key={`others-empty`} sm="12" md="12" style={{ margin: "3vw 0" }}>
-                <p>Sorry, we are still checking our products</p>
-              </Col>
-            </Row>
+            <></>
           }
         </div>
       </main>
