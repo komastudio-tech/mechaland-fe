@@ -28,47 +28,52 @@ export default function Details() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [stock, setStock] = useState(1);
-  const [category, setCategory] = useState(null);
   const [price, setPrice] = useState(null);
   const [others, setOthers] = useState([]);
-	const [datas, setDatas] = useState([]);
+	const [datas, setDatas] = useState(null);
 
-	const getData = async () => {
+  const getOthers = async (category) => {
     try {
       const response = [];
-      {status ? 
-        response = await axios.get(`api/v1/products/?id=${id}`)
-      :
-        response = await axios.get(`api/v1/interestcheck/?id=${id}`);
-      }
-      await setDatas(response.data);
-      await setCategory(response.data[0].category);
-      if (response.data[0].has_variant) {
-        await updatePrice(response.data[0].list_variant[0].price, true);
-        await setStock(response.data[0].list_variant[0].stock);
-      } else {
-        await updatePrice(response.data[0].price, true);
-        await setStock(response.data[0].stock);
-      }
-    } catch (err) {
-      console.log("ERROR: ", err);
-    }
-
-    try {
-      const response = [];
+      console.log(`Others category: ${category}`);
       {status ? 
         response = await axios.get(`api/v1/products/?category=${category}`)
       :
         response = await axios.get(`api/v1/interestcheck/`);
       }
       const res = (response.data).slice(0,4);
+      console.log(`Others res: ${JSON.stringify(res)}`);
       await setOthers(res);
     } catch (err) {
       console.log("ERROR: ", err);
     }
+  };
 
-    if (price == null && (datas.length > 0)) {
-      await rupiah(datas[0].list_variant[0].id)
+	const getData = async () => {
+    try {
+      const response = [];
+      {status ? 
+        response = await axios.get(`api/v1/products/${id}`)
+      :
+        response = await axios.get(`api/v1/interestcheck/${id}`);
+      }
+      console.log(`Datas id: ${JSON.stringify(response.data)}`)
+      await setDatas(response.data);
+      await getOthers(response.data.category);
+
+      if (response.data.has_variant) {
+        await updatePrice(response.data.list_variant[0].price, true);
+        await setStock(response.data.list_variant[0].stock);
+      } else {
+        await updatePrice(response.data.price, true);
+        await setStock(response.data.stock);
+      }
+    } catch (err) {
+      console.log("ERROR: ", err);
+    }
+
+    if (price == null && !(datas == null || datas == undefined)) {
+      await rupiah(datas.list_variant[0].id)
     }
 
     setLoad(false);
@@ -76,7 +81,7 @@ export default function Details() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [id]);
 
   const updateQuantity = (operation) => {
     if (operation == "add") {
@@ -94,10 +99,10 @@ export default function Details() {
     if (status) {
       res = priceId;
     } else {
-      let list = datas[0].list_variant;
-      for(var i = 0; i < (datas[0].list_variant).length; i++) {
+      let list = datas.list_variant;
+      for(var i = 0; i < (datas.list_variant).length; i++) {
         if(list[i].id === priceId) {
-            res = datas[0].list_variant[i].price;
+            res = datas.list_variant[i].price;
             break;
         }
       }
@@ -113,10 +118,10 @@ export default function Details() {
 
   const updateStock = (id) => {
     let result = 0;
-    let list = datas[0].list_variant;
-    for(var i = 0; i < (datas[0].list_variant).length; i++) {
+    let list = datas.list_variant;
+    for(var i = 0; i < (datas.list_variant).length; i++) {
       if(list[i].id === id) {
-          result = datas[0].list_variant[i].stock;
+          result = datas.list_variant[i].stock;
           break;
       }
     }
@@ -128,6 +133,17 @@ export default function Details() {
     var val = $('#variantDropdown').find(":selected").val();
     updatePrice(val, false);
     updateStock(val);
+  }
+
+  const moveToOther = (id, stats) => {
+    console.log(`Move to ${id} with status ${stats}`)
+    // router.push(`/details?id=${id}&status=${stats}`);
+    router.push({
+      pathname: '/details',
+      query: { id: id, status: stats }
+    }, 
+    undefined, undefined
+    );
   }
 
   return (
@@ -192,7 +208,7 @@ export default function Details() {
                     </SwiperSlide>
                   </Swiper>
                 :
-                  (datas.length > 0) ?
+                  !(datas == null || datas == undefined) ?
                   status ?
                     <Swiper
                       style={{
@@ -206,7 +222,7 @@ export default function Details() {
                       modules={[FreeMode, Navigation, Thumbs]}
                       className="mySwiper2"
                     >
-                      {datas[0].list_photos.map((item, idx) =>
+                      {datas.list_photos.map((item, idx) =>
                         <SwiperSlide key={`pict-${idx}`}>
                           <img src={`${item.image}`} />
                         </SwiperSlide>
@@ -225,7 +241,7 @@ export default function Details() {
                       className="mySwiper2"
                     >
                       <SwiperSlide key={`pictInterest`}>
-                        <img src={`${datas[0].image}`} />
+                        <img src={`${datas.image}`} />
                       </SwiperSlide>
                     </Swiper>
                   :
@@ -270,7 +286,7 @@ export default function Details() {
                   </SwiperSlide>
                 </Swiper>
               :
-                status && (datas.length > 0) ?
+                status && !(datas == null || datas == undefined) ?
                 <Swiper
                   onSwiper={setThumbsSwiper}
                   spaceBetween={10}
@@ -280,7 +296,7 @@ export default function Details() {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper"
                 >
-                  {datas[0].list_photos.map((item, idx) =>
+                  {datas.list_photos.map((item, idx) =>
                     <SwiperSlide key={`picts-${idx}`}>
                       <img src={`${item.image}`} />
                     </SwiperSlide>
@@ -299,7 +315,7 @@ export default function Details() {
                 </Swiper>
               }
             </Col>
-            {(datas.length > 0) ?
+            {!(datas == null || datas == undefined) ?
             status ?
             <Col sm="12" md="6" style={{ margin: "4vw 0", padding: "4vw" }}>
                 <Row className={`${styles.textCenter} ${styles.black}`}>
@@ -308,7 +324,7 @@ export default function Details() {
                     <Skeleton height="35px" width="350px" style={{margin: '3px 0'}}/>
                   </>
                   : 
-                    <h3 className={styles.detailsTitle}>{datas[0].title}</h3>
+                    <h3 className={styles.detailsTitle}>{datas.title}</h3>
                   }
                 </Row>
                 <Row className={styles.textCenter}>
@@ -326,9 +342,9 @@ export default function Details() {
                         <option key={`variantLoad`} value="null" selected><Skeleton height="40px" width="100px" /></option>
                       </select>
                     :
-                      datas[0].has_variant == true ?
+                      datas.has_variant == true ?
                       <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
-                        {datas[0].list_variant.map((item, idx) =>
+                        {datas.list_variant.map((item, idx) =>
                           <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.variant}</option>
                         )}
                       </select>
@@ -354,9 +370,9 @@ export default function Details() {
                   </Col>
                 </Row>
                 <Row style={{ margin: "2vw 0 1vw 0"}}>
-                  <Link href={`${datas[0].link}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">TOKOPEDIA</a></Link>
+                  <Link href={`${datas.link}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">TOKOPEDIA</a></Link>
                 </Row>
-                {datas[0].has_specs == true ?
+                {datas.has_specs == true ?
                 <Row style={{ margin: "1vw 0", textAlign: "left"}}>
                   <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0", paddingLeft: "0"}}>Specs:</p>
                   {load ?
@@ -367,7 +383,7 @@ export default function Details() {
                   </ul>
                   :
                   <ul style={{listStyle: "outside"}}>
-                    {datas[0].list_specs.map((item, idx) =>
+                    {datas.list_specs.map((item, idx) =>
                       <li key={`spec-${idx}`} className={styles.detailsSpecs}>{item.specs}</li>
                     )}
                   </ul>
@@ -383,7 +399,7 @@ export default function Details() {
                   {load ? 
                     <Skeleton height="55px" width="350px" />
                   : 
-                    <h3 className={styles.detailsTitle}>{datas[0].title}</h3>
+                    <h3 className={styles.detailsTitle}>{datas.title}</h3>
                   }
                 </Row>
                 <Row className={styles.textCenter}>
@@ -395,7 +411,7 @@ export default function Details() {
                 </Row>
                 <Row className={styles.textCenter} style={{paddingBottom: "15px", paddingTop: "25px"}}>
                   <Link href={"/join"}><a className={`${styles.detailsLabel} ${styles.textLink}`} style={{marginBottom: "1px", color: "#44564B"}}>How To Join?</a></Link>
-                  <Link href={`${datas[0].discord}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">DISCORD</a></Link>
+                  <Link href={`${datas.discord}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">DISCORD</a></Link>
                   <p className={styles.detailsLabel} style={{marginBottom: "1px"}}>*For further info please visit our discord</p>
                 </Row>
             </Col>
@@ -427,7 +443,7 @@ export default function Details() {
               </Link>
             </Col>
             <Col key={`othersLoad2`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-              <Link href={`#`}>
+            href with refresh  <Link href={`#`}>
                 <a>
                   <Row className={`${styles.textCenter} ${styles.othersPict}`}>
                     <Skeleton height="210px" width="210px" style={{margin: '4px 0'}}/>
@@ -467,17 +483,17 @@ export default function Details() {
           others.length > 0 ?
             <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             {others.map((item, idx) =>
-              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0" }}>
-                <Link href={`/details/?id=${item.id}&status=${status}`}>
-                  <a>
+              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}} onClick={() => moveToOther(item.id, status)}>
+                {/* <Link href={`/details/?id=${item.id}&status=${status}`}>
+                  <a> */}
                     <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                      <Image width="30" height="30" layout="responsive" src={`${item.image}`} alt={item.text} className={styles.featuredPict} />
+                      <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
                     </Row>
                     <Row className={styles.textCenter}>
                       <h5 className={styles.othersText}>{item.title}</h5>
                     </Row>
-                  </a>
-                </Link>
+                  {/* </a>
+                </Link> */}
               </Col>
             )}
             </Row>
