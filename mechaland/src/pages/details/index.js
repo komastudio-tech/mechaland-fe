@@ -35,14 +35,12 @@ export default function Details() {
   const getOthers = async (category) => {
     try {
       const response = [];
-      console.log(`Others category: ${category}`);
       {status ? 
         response = await axios.get(`api/v1/products/?category=${category}`)
       :
         response = await axios.get(`api/v1/interestcheck/`);
       }
       const res = (response.data).slice(0,4);
-      console.log(`Others res: ${JSON.stringify(res)}`);
       await setOthers(res);
     } catch (err) {
       console.log("ERROR: ", err);
@@ -57,7 +55,6 @@ export default function Details() {
       :
         response = await axios.get(`api/v1/interestcheck/${id}`);
       }
-      console.log(`Datas id: ${JSON.stringify(response.data)}`)
       await setDatas(response.data);
       await getOthers(response.data.category);
 
@@ -133,17 +130,6 @@ export default function Details() {
     var val = $('#variantDropdown').find(":selected").val();
     updatePrice(val, false);
     updateStock(val);
-  }
-
-  const moveToOther = (id, stats) => {
-    console.log(`Move to ${id} with status ${stats}`)
-    // router.push(`/details?id=${id}&status=${stats}`);
-    router.push({
-      pathname: '/details',
-      query: { id: id, status: stats }
-    }, 
-    undefined, undefined
-    );
   }
 
   return (
@@ -483,17 +469,17 @@ export default function Details() {
           others.length > 0 ?
             <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             {others.map((item, idx) =>
-              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}} onClick={() => moveToOther(item.id, status)}>
-                {/* <Link href={`/details/?id=${item.id}&status=${status}`}>
-                  <a> */}
+              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
+                <Link href={`/details/?id=${item.id}&status=${status}`}>
+                  <a>
                     <Row className={`${styles.textCenter} ${styles.othersPict}`}>
                       <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
                     </Row>
                     <Row className={styles.textCenter}>
                       <h5 className={styles.othersText}>{item.title}</h5>
                     </Row>
-                  {/* </a>
-                </Link> */}
+                  </a>
+                </Link>
               </Col>
             )}
             </Row>
