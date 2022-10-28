@@ -46,6 +46,14 @@ export default function Details() {
       console.log("ERROR: ", err);
     }
   };
+  const rupiah = (price) => {
+    let result =  new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR"
+    }).format(price);
+
+    return result;
+  };
 
 	const getData = async () => {
     try {
@@ -57,20 +65,21 @@ export default function Details() {
       }
       await setDatas(response.data);
       await getOthers(response.data.category);
-
-      if (response.data.has_variant) {
-        await updatePrice(response.data.list_variant[0].price, true);
-        await setStock(response.data.list_variant[0].stock);
-      } else {
-        await updatePrice(response.data.price, true);
-        await setStock(response.data.stock);
+      if (response.data.hasOwnProperty("has_variant")) {
+        if (response.data.has_variant.length > 0) {
+          await updatePrice(response.data.list_variant[0].price, true);
+          await setStock(response.data.list_variant[0].stock);
+        } else {
+          await updatePrice(response.data.price, true);
+          await setStock(response.data.stock);
+        }
       }
     } catch (err) {
       console.log("ERROR: ", err);
     }
 
     if (price == null && !(datas == null || datas == undefined)) {
-      await rupiah(datas.list_variant[0].id)
+      await rupiah(datas.price)
     }
 
     setLoad(false);
@@ -466,6 +475,7 @@ export default function Details() {
             </Col>
           </Row>
           :
+          others.hasOwnProperty('list_of_photos') ?
           others.length > 0 ?
             <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             {others.map((item, idx) =>
@@ -473,7 +483,24 @@ export default function Details() {
                 <Link href={`/details/?id=${item.id}&status=${status}`}>
                   <a>
                     <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                      <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
+                      <Image width="30" height="30" layout="responsive" src={item.list_photos.length > 0 ? item.list_photos[0].image : `/assets/temp/no_data.jpg`} alt={item.text} className={styles.featuredPict} />
+                    </Row>
+                    <Row className={styles.textCenter}>
+                      <h5 className={styles.othersText}>{item.title}</h5>
+                    </Row>
+                  </a>
+                </Link>
+              </Col>
+            )}
+            </Row>
+            :
+            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+            {others.map((item, idx) =>
+              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
+                <Link href={`/details/?id=${item.id}&status=${status}`}>
+                  <a>
+                    <Row className={`${styles.textCenter} ${styles.othersPict}`}>
+                      <Image width="30" height="30" layout="responsive" src={item.image != null ? item.image : `/assets/temp/no_data.jpg`} alt={item.text} className={styles.featuredPict} />
                     </Row>
                     <Row className={styles.textCenter}>
                       <h5 className={styles.othersText}>{item.title}</h5>
