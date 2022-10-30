@@ -51,19 +51,21 @@ export default function Details() {
     try {
       const response = [];
       {status ? 
-        response = await axios.get(`api/v1/products/${id}`)
+        response = await axios.get(`api/v1/products/${id}/`)
       :
-        response = await axios.get(`api/v1/interestcheck/${id}`);
+        response = await axios.get(`api/v1/interestcheck/${id}/`);
       }
       await setDatas(response.data);
       await getOthers(response.data.category);
 
-      if (response.data.has_variant) {
+      if (response.data.has_variant && (response.data.list_variant.length > 0)) {
         await updatePrice(response.data.list_variant[0].price, true);
         await setStock(response.data.list_variant[0].stock);
       } else {
         await updatePrice(response.data.price, true);
-        await setStock(response.data.stock);
+        if (status) {
+          await setStock(response.data.stock);
+        }
       }
     } catch (err) {
       console.log("ERROR: ", err);
@@ -321,14 +323,21 @@ export default function Details() {
                   }
                 </Row>
                 <Row className={styles.textCenter} style={{paddingBottom: "15px", paddingTop: "25px"}}>
-                  <p className={styles.detailsLabel} style={{marginBottom: "1px"}}>variant</p>
+                {load ?
+                    <Skeleton height="20px" width="80px" />
+                    :
+                    datas.list_variant.length > 0 ?
+                    <p className={styles.detailsLabel} style={{marginBottom: "1px"}}>variant</p>
+                      :
+                      <></>
+                  }
                   <Col style={{display: "flex", alignItems: "center", textAlign: "center", justifyContent: "center"}}>
                     {load ? 
                       <select className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
                         <option key={`variantLoad`} value="null" selected><Skeleton height="40px" width="100px" /></option>
                       </select>
                     :
-                      datas.has_variant == true ?
+                      (datas.has_variant && (datas.list_variant.length > 0)) ?
                       <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
                         {datas.list_variant.map((item, idx) =>
                           <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.variant}</option>
@@ -360,19 +369,26 @@ export default function Details() {
                 </Row>
                 {datas.has_specs == true ?
                 <Row style={{ margin: "1vw 0", textAlign: "left"}}>
-                  <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0", paddingLeft: "0"}}>Specs:</p>
                   {load ?
-                  <ul>
-                    <li key={`specLoad1`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="150px" /></li>
-                    <li key={`specLoad2`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="200px" /></li>
-                    <li key={`specLoad3`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="180px" /></li>
-                  </ul>
-                  :
-                  <ul style={{listStyle: "outside"}}>
-                    {datas.list_specs.map((item, idx) =>
-                      <li key={`spec-${idx}`} className={styles.detailsSpecs}>{item.specs}</li>
-                    )}
-                  </ul>
+                    <Skeleton height="20px" width="80px" />
+                    :
+                    datas.list_specs.length > 0 ?
+                      <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0", paddingLeft: "0"}}>Specs:</p>
+                      :
+                      <></>
+                  }
+                  {load ?
+                    <ul>
+                      <li key={`specLoad1`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="150px" /></li>
+                      <li key={`specLoad2`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="200px" /></li>
+                      <li key={`specLoad3`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="180px" /></li>
+                    </ul>
+                    :
+                    <ul style={{listStyle: "outside"}}>
+                      {datas.list_specs.map((item, idx) =>
+                        <li key={`spec-${idx}`} className={styles.detailsSpecs}>{item.specs}</li>
+                      )}
+                    </ul>
                   }
                 </Row>
                 :
