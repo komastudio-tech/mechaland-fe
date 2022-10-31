@@ -32,7 +32,7 @@ export default function Details() {
   const [others, setOthers] = useState([]);
 	const [datas, setDatas] = useState(null);
 
-  const getOthers = async (category) => {
+  const getOthers = async (category, id) => {
     try {
       const response = [];
       {status ? 
@@ -40,7 +40,10 @@ export default function Details() {
       :
         response = await axios.get(`api/v1/interestcheck/`);
       }
-      const res = (response.data).slice(0,4);
+      const res = response.data.filter(function(item){ 
+        return item.id != id; 
+      });
+      res = res.slice(0,4);
       await setOthers(res);
     } catch (err) {
       console.log("ERROR: ", err);
@@ -56,7 +59,7 @@ export default function Details() {
         response = await axios.get(`api/v1/interestcheck/${id}/`);
       }
       await setDatas(response.data);
-      await getOthers(response.data.category);
+      await getOthers(response.data.category, id);
 
       if (response.data.has_variant && (response.data.list_variant.length > 0)) {
         await updatePrice(response.data.list_variant[0].price, true);
@@ -81,6 +84,15 @@ export default function Details() {
   useEffect(() => {
     getData();
   }, [id]);
+
+  const formatPrice = (price) => {
+    let result =  new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR"
+    }).format(price);
+
+    return result;
+  }
 
   const updateQuantity = (operation) => {
     if (operation == "add") {
@@ -107,11 +119,7 @@ export default function Details() {
       }
     }
 
-    let result =  new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR"
-    }).format(res);
-
+    let result =  formatPrice(res);
     setPrice(result);
   }
 
@@ -408,7 +416,7 @@ export default function Details() {
                   {load ? 
                     <Skeleton height="45px" width="100px" />
                   : 
-                    <p className={styles.detailsPrice}>Rp -</p>
+                    <p className={styles.detailsPrice}>{datas.price ? formatPrice(datas.price) : "Rp -"}</p>
                   }
                 </Row>
                 <Row className={styles.textCenter} style={{paddingBottom: "15px", paddingTop: "25px"}}>
@@ -483,22 +491,40 @@ export default function Details() {
           </Row>
           :
           others.length > 0 ?
-            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-            {others.map((item, idx) =>
-              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
-                <Link href={`/details/?id=${item.id}&status=${status}`}>
-                  <a>
-                    <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                      <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
-                    </Row>
-                    <Row className={styles.textCenter}>
-                      <h5 className={styles.othersText}>{item.title}</h5>
-                    </Row>
-                  </a>
-                </Link>
-              </Col>
-            )}
-            </Row>
+            status ?
+              <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+              {others.map((item, idx) =>
+                <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
+                  <Link href={`/details/?id=${item.id}&status=${status}`}>
+                    <a>
+                      <Row className={`${styles.textCenter} ${styles.othersPict}`}>
+                        <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.title} className={styles.featuredPict} />
+                      </Row>
+                      <Row className={styles.textCenter}>
+                        <h5 className={styles.othersText}>{item.title}</h5>
+                      </Row>
+                    </a>
+                  </Link>
+                </Col>
+              )}
+              </Row>
+              :
+              <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+              {others.map((item, idx) =>
+                <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
+                  <Link href={`/details/?id=${item.id}&status=${status}`}>
+                    <a>
+                      <Row className={`${styles.textCenter} ${styles.othersPict}`}>
+                        <Image width="30" height="30" layout="responsive" src={`${item.image}`} alt={item.title} className={styles.featuredPict} />
+                      </Row>
+                      <Row className={styles.textCenter}>
+                        <h5 className={styles.othersText}>{item.title}</h5>
+                      </Row>
+                    </a>
+                  </Link>
+                </Col>
+              )}
+              </Row>
             :
             <></>
           }
