@@ -32,7 +32,7 @@ export default function Details() {
   const [others, setOthers] = useState([]);
 	const [datas, setDatas] = useState(null);
 
-  const getOthers = async (category) => {
+  const getOthers = async (category, id) => {
     try {
       const response = [];
       {status ? 
@@ -40,7 +40,10 @@ export default function Details() {
       :
         response = await axios.get(`api/v1/interestcheck/`);
       }
-      const res = (response.data).slice(0,4);
+      const res = response.data.filter(function(item){ 
+        return item.id != id; 
+      });
+      res = res.slice(0,4);
       await setOthers(res);
     } catch (err) {
       console.log("ERROR: ", err);
@@ -51,19 +54,21 @@ export default function Details() {
     try {
       const response = [];
       {status ? 
-        response = await axios.get(`api/v1/products/${id}`)
+        response = await axios.get(`api/v1/products/${id}/`)
       :
-        response = await axios.get(`api/v1/interestcheck/${id}`);
+        response = await axios.get(`api/v1/interestcheck/${id}/`);
       }
       await setDatas(response.data);
-      await getOthers(response.data.category);
+      await getOthers(response.data.category, id);
 
-      if (response.data.has_variant) {
+      if (response.data.has_variant && (response.data.list_variant.length > 0)) {
         await updatePrice(response.data.list_variant[0].price, true);
         await setStock(response.data.list_variant[0].stock);
       } else {
         await updatePrice(response.data.price, true);
-        await setStock(response.data.stock);
+        if (status) {
+          await setStock(response.data.stock);
+        }
       }
     } catch (err) {
       console.log("ERROR: ", err);
@@ -79,6 +84,15 @@ export default function Details() {
   useEffect(() => {
     getData();
   }, [id]);
+
+  const formatPrice = (price) => {
+    let result =  new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR"
+    }).format(price);
+
+    return result;
+  }
 
   const updateQuantity = (operation) => {
     if (operation == "add") {
@@ -105,11 +119,7 @@ export default function Details() {
       }
     }
 
-    let result =  new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR"
-    }).format(res);
-
+    let result =  formatPrice(res);
     setPrice(result);
   }
 
@@ -321,14 +331,21 @@ export default function Details() {
                   }
                 </Row>
                 <Row className={styles.textCenter} style={{paddingBottom: "15px", paddingTop: "25px"}}>
-                  <p className={styles.detailsLabel} style={{marginBottom: "1px"}}>variant</p>
+                {load ?
+                    <Skeleton height="20px" width="80px" />
+                    :
+                    datas.list_variant.length > 0 ?
+                    <p className={styles.detailsLabel} style={{marginBottom: "1px"}}>variant</p>
+                      :
+                      <></>
+                  }
                   <Col style={{display: "flex", alignItems: "center", textAlign: "center", justifyContent: "center"}}>
                     {load ? 
                       <select className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
                         <option key={`variantLoad`} value="null" selected><Skeleton height="40px" width="100px" /></option>
                       </select>
                     :
-                      datas.has_variant == true ?
+                      (datas.has_variant && (datas.list_variant.length > 0)) ?
                       <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
                         {datas.list_variant.map((item, idx) =>
                           <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.variant}</option>
@@ -360,19 +377,26 @@ export default function Details() {
                 </Row>
                 {datas.has_specs == true ?
                 <Row style={{ margin: "1vw 0", textAlign: "left"}}>
-                  <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0", paddingLeft: "0"}}>Specs:</p>
                   {load ?
-                  <ul>
-                    <li key={`specLoad1`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="150px" /></li>
-                    <li key={`specLoad2`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="200px" /></li>
-                    <li key={`specLoad3`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="180px" /></li>
-                  </ul>
-                  :
-                  <ul style={{listStyle: "outside"}}>
-                    {datas.list_specs.map((item, idx) =>
-                      <li key={`spec-${idx}`} className={styles.detailsSpecs}>{item.specs}</li>
-                    )}
-                  </ul>
+                    <Skeleton height="20px" width="80px" />
+                    :
+                    datas.list_specs.length > 0 ?
+                      <p className={styles.detailsSpecs} style={{ margin: "20px 0 1px 0", paddingLeft: "0"}}>Specs:</p>
+                      :
+                      <></>
+                  }
+                  {load ?
+                    <ul>
+                      <li key={`specLoad1`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="150px" /></li>
+                      <li key={`specLoad2`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="200px" /></li>
+                      <li key={`specLoad3`} className={styles.detailsSpecs} style={{margin: '3px 0'}}><Skeleton height="20px" width="180px" /></li>
+                    </ul>
+                    :
+                    <ul style={{listStyle: "outside"}}>
+                      {datas.list_specs.map((item, idx) =>
+                        <li key={`spec-${idx}`} className={styles.detailsSpecs}>{item.specs}</li>
+                      )}
+                    </ul>
                   }
                 </Row>
                 :
@@ -392,7 +416,7 @@ export default function Details() {
                   {load ? 
                     <Skeleton height="45px" width="100px" />
                   : 
-                    <p className={styles.detailsPrice}>Rp -</p>
+                    <p className={styles.detailsPrice}>{datas.price ? formatPrice(datas.price) : "Rp -"}</p>
                   }
                 </Row>
                 <Row className={styles.textCenter} style={{paddingBottom: "15px", paddingTop: "25px"}}>
@@ -467,22 +491,40 @@ export default function Details() {
           </Row>
           :
           others.length > 0 ?
-            <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-            {others.map((item, idx) =>
-              <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
-                <Link href={`/details/?id=${item.id}&status=${status}`}>
-                  <a>
-                    <Row className={`${styles.textCenter} ${styles.othersPict}`}>
-                      <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.text} className={styles.featuredPict} />
-                    </Row>
-                    <Row className={styles.textCenter}>
-                      <h5 className={styles.othersText}>{item.title}</h5>
-                    </Row>
-                  </a>
-                </Link>
-              </Col>
-            )}
-            </Row>
+            status ?
+              <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+              {others.map((item, idx) =>
+                <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
+                  <Link href={`/details/?id=${item.id}&status=${status}`}>
+                    <a>
+                      <Row className={`${styles.textCenter} ${styles.othersPict}`}>
+                        <Image width="30" height="30" layout="responsive" src={`${item.list_photos[0].image}`} alt={item.title} className={styles.featuredPict} />
+                      </Row>
+                      <Row className={styles.textCenter}>
+                        <h5 className={styles.othersText}>{item.title}</h5>
+                      </Row>
+                    </a>
+                  </Link>
+                </Col>
+              )}
+              </Row>
+              :
+              <Row style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+              {others.map((item, idx) =>
+                <Col key={`others-${idx}`} sm="12" md="3" style={{ margin: "3vw 0", cursor: "pointer"}}>
+                  <Link href={`/details/?id=${item.id}&status=${status}`}>
+                    <a>
+                      <Row className={`${styles.textCenter} ${styles.othersPict}`}>
+                        <Image width="30" height="30" layout="responsive" src={`${item.image}`} alt={item.title} className={styles.featuredPict} />
+                      </Row>
+                      <Row className={styles.textCenter}>
+                        <h5 className={styles.othersText}>{item.title}</h5>
+                      </Row>
+                    </a>
+                  </Link>
+                </Col>
+              )}
+              </Row>
             :
             <></>
           }
