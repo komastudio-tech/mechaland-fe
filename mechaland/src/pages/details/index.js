@@ -74,10 +74,6 @@ export default function Details() {
       console.log("ERROR: ", err);
     }
 
-    if (price == null && !(datas == null || datas == undefined)) {
-      await rupiah(datas.list_variant[0].id)
-    }
-
     setLoad(false);
   };
 
