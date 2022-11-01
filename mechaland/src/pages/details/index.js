@@ -373,7 +373,7 @@ export default function Details() {
                   </Col>
                 </Row>
                 <Row style={{ margin: "2vw 0 1vw 0"}}>
-                  <Link href={`${datas.link}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">TOKOPEDIA</a></Link>
+                  <Link href={`${datas.link}`}><a target="_blank" rel="noopener noreferrer" className={`btn btn-lg active ${styles.detailsButton}`} role="button" aria-pressed="true">{datas.link_source == "TOKOPEDIA" ? "TOKOPEDIA" : "https://discord.com/invite/Y5Bj6rK9He"}</a></Link>
                 </Row>
                 {datas.has_specs == true ?
                 <Row style={{ margin: "1vw 0", textAlign: "left"}}>
