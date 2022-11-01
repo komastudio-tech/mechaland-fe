@@ -114,7 +114,7 @@ export default function Navigation({ children }) {
                       <span className={styles.navText} style={router.pathname == "/" ? {color: "#E5E4CC", filter: `brightness(${((backgroundTransparacy*100)-100)*(-1)}%)`} : {color: "#000000"}}>UPCOMING</span>
                     </a></Link>
                     <ul className="dropdown-menu">
-                      <li><Link href="/instock"><a className="dropdown-item">IN-STOCK</a></Link></li>
+                      {/* <li><Link href="/instock"><a className="dropdown-item">IN-STOCK</a></Link></li> */}
                       <li><Link href="/groupbuy"><a className="dropdown-item">GROUP BUY</a></Link></li>
                     </ul>
                   </li>
