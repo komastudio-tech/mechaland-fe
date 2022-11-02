@@ -62,8 +62,8 @@ export default function Details() {
       await getOthers(response.data.category, id);
 
       if (response.data.has_variant && (response.data.list_variant.length > 0)) {
-        await updatePrice(response.data.list_variant[0].price, true);
-        await setStock(response.data.list_variant[0].stock);
+        await updatePrice(response.data.price, true);
+        await setStock(response.data.stock);
       } else {
         await updatePrice(response.data.price, true);
         if (status) {
@@ -72,10 +72,6 @@ export default function Details() {
       }
     } catch (err) {
       console.log("ERROR: ", err);
-    }
-
-    if (price == null && !(datas == null || datas == undefined)) {
-      await rupiah(datas.list_variant[0].id)
     }
 
     setLoad(false);
@@ -138,8 +134,13 @@ export default function Details() {
 
   const variant = () => {
     var val = $('#variantDropdown').find(":selected").val();
-    updatePrice(val, false);
-    updateStock(val);
+    if (val == datas.id) {
+      updatePrice(datas.price, true);
+      updateStock(datas.stock);
+    } else {
+      updatePrice(val, false);
+      updateStock(val);
+    }
   }
 
   return (
@@ -347,8 +348,9 @@ export default function Details() {
                     :
                       (datas.has_variant && (datas.list_variant.length > 0)) ?
                       <select id="variantDropdown" className={`${styles.detailsSelect} form-control`} onChange={() => variant()}>
+                        <option key={`variant-default`} value={datas.id} selected={true}>{`Select variant...`}</option>
                         {datas.list_variant.map((item, idx) =>
-                          <option key={`variant-${idx}`} value={item.id} selected={idx == 0 ? true : false}>{item.variant}</option>
+                          <option key={`variant-${idx}`} value={item.id} selected={false}>{item.variant}</option>
                         )}
                       </select>
                       :
