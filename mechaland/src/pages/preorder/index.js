@@ -81,7 +81,7 @@ export default function Preorder() {
           <div className={styles.desc}>
             <h1 className={styles.title}>PREORDER</h1>
             <p className={styles.subTitle}>
-							<b>What is a Pre-Order?</b><br/>We usually order some additional stock on top of the group buy quantity and sell them as GMK in stock. If you have missed the group buy and are afraid of missing the in-stock, pre-order is the best option for you. The pre-order price will be higher than the group buy and lower than the in-stock. The delivery time will be around the same time as the group buy orders.
+							<b>What is a Pre-Order?</b><br/>We usually order some additional stock on top of the group buy quantity and sell them as in stock. If you have missed the group buy and are afraid of missing the in-stock, pre-order is the best option for you. The pre-order price will be higher than the group buy and lower than the in-stock. The delivery time will be around the same time as the group buy orders.
             </p>
           </div>
         </div>
